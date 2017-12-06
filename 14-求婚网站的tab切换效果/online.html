@@ -1,0 +1,57 @@
+<!--婚礼套餐tab切换 start-->
+<style>
+    .do-section.most-box {
+        display: none;
+    }
+
+    .do-section.most-box.area-most-popular {
+        display: block;
+    }
+
+    .do-ivq2v a {
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .do-ivq2v a.active {
+        background-color: rgb(232, 82, 152);
+        color: #fff;
+    }
+
+</style>
+<script>
+    // 删除小导航里a标签的href跳转属性
+    $('.do-ivq2v').find('a').each(function (index, element) {
+        if (index <= 3) {
+            $(this).removeAttr('href');
+        }
+    });
+
+    // 默认选中第一个按钮"最流行"
+    $('.do-ivq2v-1 a').addClass('active');
+
+    // 小导航的按钮点击时切换
+    $('.do-ivq2v').find('a').on('click', function () {
+        $('.do-ivq2v').find('a').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $('.do-ivq2v-1').on('click', function () {
+        $('.do-section.most-box').hide();
+        $('.area-most-popular').show();
+    });
+    $('.do-ivq2v-5').on('click', function () {
+        $('.do-section.most-box').hide();
+        $('.area-most-creativity').show();
+    });
+    $('.do-ivq2v-6').on('click', function () {
+        $('.do-section.most-box').hide();
+        $('.area-most-surprise').show();
+    });
+    $('.do-ivq2v-7').on('click', function () {
+        $('.do-section.most-box').hide();
+        $('.area-most-chongqing').show();
+    });
+
+</script>
+<!--婚礼套餐tab切换 end-->

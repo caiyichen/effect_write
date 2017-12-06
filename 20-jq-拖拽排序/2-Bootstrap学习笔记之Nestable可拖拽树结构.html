@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap学习笔记之Nestable可拖拽树结构</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <!--<link rel="stylesheet" href="./css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="./css/appGreen.css">
+    <link rel="stylesheet" href="./css/nestable.css">
+</head>
+<body>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="dd">
+            <ol class="dd-list">
+                <li class="dd-item dd3-item" data-id="13">
+                    <div class="dd-handle dd3-handle">Drag</div>
+                    <div class="dd3-content">Item 13</div>
+                </li>
+                <li class="dd-item dd3-item" data-id="14">
+                    <div class="dd-handle dd3-handle">Drag</div>
+                    <div class="dd3-content">Item 14</div>
+                </li>
+                <li class="dd-item dd3-item" data-id="15">
+                    <div class="dd-handle dd3-handle">Drag</div>
+                    <div class="dd3-content">Item 15</div>
+                    <ol class="dd-list">
+                        <li class="dd-item dd3-item" data-id="16">
+                            <div class="dd-handle dd3-handle">Drag</div>
+                            <div class="dd3-content">Item 16</div>
+                        </li>
+                        <li class="dd-item dd3-item" data-id="17">
+                            <div class="dd-handle dd3-handle">Drag</div>
+                            <div class="dd3-content">Item 17</div>
+                        </li>
+                        <li class="dd-item dd3-item" data-id="18">
+                            <div class="dd-handle dd3-handle">Drag</div>
+                            <div class="dd3-content">Item 18</div>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../util/jquery-3.1.0.min.js"></script>
+<script src="js/jquery.nestable.js"></script>
+<script type="text/javascript">
+    // 参考文档：http://prisonbreak.iteye.com/blog/2179464
+    jQuery(function() {
+        $('.dd').nestable();
+    });
+</script>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="panel panel-default" ng-repeat="order in orders.list track by $index">
+    <div class="table-responsive"
+         style="overflow-x: inherit">
+        <table class="table table-striped b-t b-light m-b-none">
+            <thead style="background: #f7f7f7">
+            <tr>
+                <th style="width:20px;"
+                    ng-if="listFilter.status==CONSTANTS.ORDER_STATUS_WAITE_PAY">
+                    {{checkStatus}}
+                    <label class="i-checks m-b-none">
+                        <input type="checkbox"
+                               ng-model="checkStatus"
+                               ng-checked="listFilter.allCheckStatus"
+                               ng-click="selectOrderAction(order.id,checkStatus)"><i></i></label>
+                </th>
+                <th class="text-center">商品</th>
+                <th class="text-center">{{order.created_at*1000|date:'yyyy-MM-dd HH:mm:ss'}}
+                </th>
+                <th class="text-center">订单号：{{order.id}}</th>
+                <th class="text-center">总额</th>
+                <th class="text-center" style="width: 25%">收货人信息</th>
+                <th class="text-center" style="width: 15%"
+                    ng-if="listFilter.status!=CONSTANTS.ORDER_STATUS_SUCCESS">
+                    {{listFilter.status==CONSTANTS.ORDER_STATUS_WAITE_RECEIVE?'状态':'操作'}}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="product in order.products track by product.productid">
+                <td ng-if="listFilter.status==CONSTANTS.ORDER_STATUS_WAITE_PAY"></td>
+                <td colspan="4" class="b-r">
+                    <div class="wrapper-sm">
+                        <div class="text-lg text-warning-dker pull-right">
+                            ￥{{(product.product.price*product.num)/100}}
+                        </div>
+                        <div class="thumb pull-left m-r">
+                            <img class="w-xxs" ng-src="{{product.product.pictures[0]}}"
+                                 alt="商品图片">
+                        </div>
+                        <div class="clear">
+                            <p class="text-md">{{product.product.name}}</p>
+                            <p class="text-base">
+                                                        <span class="m-r">数量：<span
+                                                                style="vertical-align: text-top">×</span>&nbsp;{{product.num}}</span>
+                                <span>单价：<span class="text-warning-dker text-md">￥&nbsp;{{product.product.price/100}}</span></span>
+                            </p>
+                        </div>
+                    </div>
+                </td>
+                <td ng-if="$index==0" rowspan="{{order.products.length}}" class="text-left b-r">
+                    <div class="wrapper-sm">
+                        <p class="m-b-xs">{{order.address.user_name}}</p>
+                        <p class="m-b-xs">{{order.address.tel_number}}</p>
+                        <p class="m-b-xs">{{getAddressName(order.address)}}</p>
+                        <p class="m-b-xs">{{order.address.detail_info}}</p>
+                        <a ng-click="readSendInfoAction()"
+                           ng-if="listFilter.status==CONSTANTS.ORDER_STATUS_WAITE_RECEIVE
+                                                   ||listFilter.status==CONSTANTS.ORDER_STATUS_SUCCESS">
+                            <span class="text-primary">查看发货信息</span>
+                        </a>
+                    </div>
+                </td>
+                <td ng-if="$index==0 && listFilter.status!=CONSTANTS.ORDER_STATUS_SUCCESS"
+                    rowspan="{{order.products.length}}" class="text-center">
+                    <div class="wrapper-sm"
+                         ng-if="listFilter.status==CONSTANTS.ORDER_STATUS_WAITE_PAY">
+                        <button class="btn btn-default" ng-click="closeOrderAction(order.id)">关闭订单
+                        </button>
+                        <p class="m-t-xs">{{}}分钟后自动关闭</p>
+                    </div>
+                    <div ng-if="listFilter.status==CONSTANTS.ORDER_STATUS_WAITE_SEND">
+                        <button class="btn btn-default" ng-click='sendAction()'>发货</button>
+                    </div>
+                    <div ng-if="listFilter.status==CONSTANTS.ORDER_STATUS_WAITE_RECEIVE">
+                        {{getGoodStatus()}}
+                    </div>
+                    <div ng-if="listFilter.status==CONSTANTS.ORDER_STATUS_CLOSED">
+                        <button class="btn btn-default" ng-click='deleteOrderAction()'>删除
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<label class="i-checks m-b-none">
+    <input type="checkbox" ng-model="listFilter.allCheckStatus"
+           ng-checked="listFilter.allCheckStatus"
+           ng-click="selectAllAction(listFilter.allCheckStatus,orders.list)"
+           title="全选"><i></i>
+</label>全选
+
+</body>
+<script>
+    // 订单列表过滤初始化
+    $scope.listFilter = {
+        allCheckStatus: false,//默认未全选中
+    };
+
+    $scope.selectOrderArr = [];// 代付款中选中的商品订单集
+    $scope.checkStatus = false;//默认未选中
+
+
+    /**
+     * 单个选中/取消选中
+     * @param orderid
+     * @param checkStatus
+     */
+    $scope.selectOrderAction = function (orderid, checkStatus) {
+        //选中
+        if (checkStatus == true) {
+            $scope.selectOrderArr.push(orderid);
+        } else {
+            //取消选中
+            $scope.selectOrderArr.splice($scope.selectOrderArr.indexOf(orderid), 1);
+        }
+
+        // 是否是全选中
+        $scope.listFilter.allCheckStatus = $scope.selectOrderArr.length == $scope.orders.list.length;
+
+        console.log($scope.selectOrderArr);
+    };
+
+    /**
+     * 全选
+     * @param allCheckStatus
+     * @param ordersList
+     */
+    $scope.selectAllAction = function (allCheckStatus, ordersList) {//全选
+        $scope.selectOrderArr = [];
+        if (allCheckStatus == true) {
+            $scope.checkStatus = true;
+            ordersList.map((val)=> {
+                $scope.selectOrderArr.push(val.id);
+        });
+        } else {
+            $scope.checkStatus = false;
+        }
+        console.log($scope.selectOrderArr);
+    };
+</script>
+</html>

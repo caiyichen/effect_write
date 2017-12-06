@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <!--测试-->
+    <link rel="stylesheet" type="text/css"
+          href="http://bk.st.styleweb.com.cn/editor/??do-basic.css,do-layout.css,do-form.css,do-element.css,element/do-tabText.css,js/wow/animate.css?20179411472"/>
+    <link rel="stylesheet" type="text/css"
+          href="http://bk.st.styleweb.com.cn/editor/js/froala/css/??froala_style.min.css,plugins/image.min.css,plugins/table.min.css,plugins/colors.min.css?201791821032">
+    <!--测试-->
+    <style>
+        .wl-map .do-middle {
+            position: absolute;
+            left: -65px;
+            top: 70px;
+        }
+
+        .wl-pianyi .do-block {
+            box-shadow: 0px 0px 14.25px 0.75px rgba(5, 147, 30, 0.15);
+        }
+
+        .wl-map {
+            z-index: 999;
+        }
+
+        .wl-map .do-element-image-content, .wl-map .do-image-href {
+            overflow: initial;
+        }
+
+        .wl-map .do-middle {
+            position: absolute;
+            left: -65px;
+            top: 70px;
+        }
+
+        .wl-map .do-middle-center {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0px 0px 14.25px 0.75px rgba(21, 136, 70, 0.15);
+        }
+
+        .wl-left-left .do-col-6 {
+            box-shadow: 0px 0px 14.25px 0.75px rgba(21, 136, 70, 0.5);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .wl-left-left .do-col-6 {
+            position: relative !important;
+            right: -80px !important;
+        }
+
+        .wl-left-left .do-col-6 {
+            position: relative;
+            left: 70px;
+        }
+
+        @media only screen and (max-width: 640px) {
+            .wl-map .do-middle {
+                top: -40px !important;
+            }
+
+            .do-element-image-content {
+                padding-top: 80% ! imporatnt;
+            }
+
+            .wl-left-left .do-col-6 {
+                right: 0 !important;
+            }
+
+            .do-D-c-79-80-93 > .do-panelcol {
+                padding: 25px;
+            }
+
+            .do-text-k67bx .do-element-general {
+                padding: 0 !important;
+            }
+
+            .wl-left-left .do-col-6 {
+                left: 0;
+            }
+
+        }
+    </style>
+
+    <!--引入监听屏幕滚动的插件-->
+    <script src="https://cdn.bootcss.com/waypoints/4.0.1/jquery.waypoints.js"></script>
+    <!--引入百度echart插件-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=hKj75K8rsIvoCntq3odBb7yv8FUHw4jc"></script>
+    <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+
+    <style>
+        .bgy-map-logo {
+            position: absolute;
+            width: 81px;
+            height: 77px;
+            bottom: 58px;
+            right: 155px;
+        }
+
+        @media (max-width: 640px) {
+            .bgy-map-logo {
+                height: 77px;
+                bottom: 7px;
+                right: 89px;
+            }
+
+            .bgy-map-logo img {
+                width: 55%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="do-section do-area" id="area_214001_0" data-fullname="">
+    <div class="do-area-bg ">
+        <div class="do-area-bg-conter">
+            <div class="bgcolor"></div>
+        </div>
+    </div>
+    <div id="area_0" class="do-row do-row-one spacing1 ">
+        <div class="do-row spacing1 ">
+            <div class="do-col-6 wl-left-left do-D-c-79-80" id="D-c-79-80">
+                <div class="do-panelcol">
+                    <div class="do-block do-space do-k5bad">
+                        <div class="do-element-space pc" style="padding-top:20.833333333333336%;"></div>
+                        <div class="do-element-space phone" style="padding-top:7.668711656441718%;"></div>
+                    </div>
+                    <div class="do-block do-rows">
+                        <div class="do-row wl-pianyi">
+                            <div class="do-col-6 do-D-c-79-80-93" id="D-c-79-80-93">
+                                <div class="do-panelcol">
+                                    <div class="do-block do-space do-k5bac">
+                                        <div class="do-element-space pc" style="padding-top:7.962962962962964%;"></div>
+                                        <div class="do-element-space phone" style="padding-top:5%;"></div>
+                                    </div>
+                                    <div class="do-block do-text do-k5bab">
+                                        <div class="do-text-k5bab">
+                                            <div class="do-element-text do-element-general">
+                                                <div class="do-element-text-content do-html">
+                                                    <div class="do-html-content"><p><img class="fr-dib fr-fil"
+                                                                                         src="http://bk.image.styleweb.com.cn/2017/9/5/15937_j77b0zf8.png?imageView2/2/w/1800">
+                                                    </p>
+                                                        <p style="line-height: 1;"><br></p>
+                                                        <p style="line-height: 1;"><span
+                                                                style="font-family: &quot;Microsoft YaHei&quot;, 微软雅黑, MicrosoftJhengHei, 华文细黑, STHeiti, MingLiu; font-size: 30px;"><strong><span
+                                                                style="color: rgb(255, 255, 255);">品牌简介</span></strong></span>
+                                                        </p>
+                                                        <p style="line-height: 1;"><br></p>
+                                                        <p style="line-height: 1;"><span
+                                                                style="font-family: &quot;Microsoft YaHei&quot;, 微软雅黑, MicrosoftJhengHei, 华文细黑, STHeiti, MingLiu; font-size: 18px; color: rgb(255, 255, 255);">让天下人享受水果好生活</span>
+                                                        </p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="do-block do-space do-k67bw">
+                                        <div class="do-element-space pc" style="padding-top:4.62962962962963%;"></div>
+                                        <div class="do-element-space phone" style="padding-top:5%;"></div>
+                                    </div>
+                                    <div class="do-block do-text do-k67bx">
+                                        <div class="do-text-k67bx">
+                                            <div class="do-element-text do-element-general">
+                                                <div class="do-element-text-content do-html">
+                                                    <div class="do-html-content"><p style="line-height: 1.7;"><span
+                                                            style="color: rgb(239, 239, 239);">百果园，全称深圳百果园实业发展有限公司，是一家集水果种植、营销拓展、品牌运营、门店零售、物流仓储、品质分级、科研培训于一体的大型水果连锁企业。2001年成立至今，已完成全国41个城市，超2600家门店，15个配送中心，全球200多个水果基地的布局，为全国3000万家庭提供来自全球的好吃果品，并成功建立了果品等级分级体系，将“好吃”列为检验水果的重要标准。</span>
+                                                    </p></div>
+                                                </div>
+                                                <div class="do-area-bg">
+                                                    <div class="do-area-bg-conter">
+                                                        <div class="bgcolor"></div>
+                                                    </div>
+                                                </div>
+                                                <style>.do-text-k67bx .do-element-general {
+                                                    padding: 0px 180px 0px 0px;
+                                                }</style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="do-block do-space do-k5baa">
+                                        <div class="do-element-space pc" style="padding-top:6.619385342789598%;"></div>
+                                        <div class="do-element-space phone" style="padding-top:5%;"></div>
+                                    </div>
+                                    <div class="do-block do-space do-k5ba8">
+                                        <div class="do-element-space pc" style="padding-top:19.444444444444446%;"></div>
+                                        <div class="do-element-space phone" style="padding-top:5%;"></div>
+                                    </div>
+                                    <div class="do-area-bg">
+                                        <div class="do-area-bg-conter">
+                                            <div class="bgcolor"></div>
+                                        </div>
+                                    </div>
+                                    <style>.do-D-c-79-80-93 > .do-panelcol > .do-area-bg .bgcolor {
+                                        background-color: rgb(5, 147, 30);
+                                    }
+
+                                    .do-D-c-79-80-93 > .do-panelcol > .do-area-bg {
+                                        border-radius: 18px;
+                                    }
+
+                                    .do-D-c-79-80-93 > .do-panelcol {
+                                        padding: 0px 0px 0px 60px;
+                                    }</style>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="do-block do-space do-k5ba7">
+                        <div class="do-element-space pc" style="padding-top:16.666666666666664%;"></div>
+                        <div class="do-element-space phone hide" style="padding-top:16.400000000000002%;"></div>
+                    </div>
+                    <div class="do-block do-space do-k5ba6">
+                        <div class="do-element-space pc" style="padding-top:27.333333333333332%;"></div>
+                        <div class="do-element-space phone" style="padding-top:5%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="do-col-6 wl-map do-D-c-12-137" id="D-c-12-137">
+                <div class="do-panelcol">
+                    <div class="do-block do-space do-k5ba5">
+                        <div class="do-element-space pc" style="padding-top:23%;"></div>
+                        <div class="do-element-space phone" style="padding-top:5%;"></div>
+                    </div>
+                    <div class="do-block do-image do-k5ba4">
+                        <div class="do-element-image do-element-media">
+                            <div class="do-element-image-content do-html" style="padding-top:89.02229845626071%;">
+                                <div class="do-image-href sizeimg4 ">
+                                    <div class="do-middle">
+                                        <div class="do-middle-center"><img class="scrollLoading loadingEnd"
+                                                                           data-src="http://bk.image.styleweb.com.cn/2017/11/17/15937_ja39qg0b.png?imageView2/2/w/600/q/100"
+                                                                           src="http://bk.image.styleweb.com.cn/2017/11/17/15937_ja39qg0b.png?imageView2/2/w/600/q/100"
+                                                                           alt=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $('.do-k5ba4').find('.do-html .do-middle-center').html('<div id="baiguoyuan-map" style="height: 100%;width: 100%"></div><div class="bgy-map-logo"><img src="http://bk.image.styleweb.com.cn/2017/11/22/143_jaat3znl.png" alt="logo"></div>');
+
+        var bgyMapWidget = {
+            init: false
+        };
+        bgyMapWidget.dom = document.getElementById("baiguoyuan-map");
+        bgyMapWidget.myChart = echarts.init(bgyMapWidget.dom);
+        bgyMapWidget.app = {};
+        bgyMapWidget.option = null;
+
+        // 地图省份数据
+        bgyMapWidget.data = [
+            {name: '南海诸岛', value: 0, itemStyle: {normal: {opacity: 0, label: {show: false}}}}// 隐藏地图右下角的南海诸岛框
+        ];
+
+        // 初始 option
+        bgyMapWidget.option = {
+            baseOption: {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{b}'
+                },
+                visualMap: {
+                    show: false,
+                    type: 'continuous',
+                    color: ['#019418']
+                },
+
+                series: [
+                    {
+                        name: '百果园城市',
+                        type: 'map',
+                        mapType: 'china',
+                        roam: false,// 平移漫游(缩放):不开启
+                        itemStyle: {
+                            normal: { // 默认样式
+                                borderWidth: 1,
+                                borderColor: 'lightgreen',
+                                color: '#fff',
+                                label: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {// 选中样式
+                                borderWidth: 1,
+                                borderColor: '#fff',
+                                color: '#019418',
+                                label: {
+                                    show: true,
+                                    textStyle: {
+                                        color: '#fff'
+                                    }
+                                }
+                            }
+                        },
+                        data: bgyMapWidget.data // 数据
+                    }
+                ]
+            }
+        };
+
+        bgyMapWidget.num = 0;
+
+        // 将选中的省份：
+        bgyMapWidget.provinceArr = [
+            {name: '北京', value: 1},
+            {name: '河南', value: 1},
+            {name: '安徽', value: 1},
+            {name: '江苏', value: 1},
+            {name: '上海', value: 1},
+            {name: '浙江', value: 1},
+            {name: '江西', value: 1},
+            {name: '福建', value: 1},
+            {name: '湖北', value: 1},
+            {name: '湖南', value: 1},
+            {name: '广东', value: 1},
+            {name: '广西', value: 1},
+            {name: '四川', value: 1},
+            {name: '重庆', value: 1},
+            {name: '海南', value: 1}
+        ];
+
+        /**
+         * 生成添加数据
+         */
+        bgyMapWidget.addData = function () {
+            bgyMapWidget.data.push(bgyMapWidget.provinceArr[bgyMapWidget.num]);
+            bgyMapWidget.num++;
+
+            // 清除计时器
+            if (bgyMapWidget.num >= bgyMapWidget.provinceArr.length) {
+                clearTimeout(bgyMapWidget.addDataTime);
+            }
+        };
+
+        /**
+         * 计时器模拟异步加载数据
+         */
+        bgyMapWidget.showMap = function () {
+            // 生成添加数据
+            bgyMapWidget.addData();
+            //  填入（更新）数据
+            bgyMapWidget.myChart.setOption({
+                series: [{
+                    name: '百果园城市',
+                    data: bgyMapWidget.data
+                }]
+            });
+        };
+
+
+        // 绘制地图
+        if (bgyMapWidget.option && typeof bgyMapWidget.option === "object") {
+            bgyMapWidget.myChart.setOption(bgyMapWidget.option, true);
+        }
+
+        // 监听页面滚动，滚动到地图时显示选中省份
+        var tplItemDom = $("#baiguoyuan-map");
+        var waypointObj = tplItemDom ? tplItemDom : false;
+        if (waypointObj) {
+            // 图片上滑
+            tplItemDom.waypoint(function (direction) {
+                if (direction === "down" && !bgyMapWidget.init) {
+                    bgyMapWidget.init = true;
+                    bgyMapWidget.addDataTime = null;
+                    for (var i = 0; i < bgyMapWidget.provinceArr.length; i++) {
+                        var time = Math.floor((Math.random() * 2500) + 500); // 省市高亮速度：500~3000毫秒
+                        bgyMapWidget.addDataTime = setTimeout(bgyMapWidget.showMap, time);
+                    }
+                }
+            }, {
+                offset: '60%'
+            });
+        }
+    });
+</script>
+
+</html>

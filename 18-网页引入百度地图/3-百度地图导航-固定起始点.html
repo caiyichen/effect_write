@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度地图导航-固定起始点</title>
+</head>
+<body>
+<div id="Content_are" class="Content_are pageCon">
+    <div id="map"></div>
+</div>
+</body>
+<script src="../util/jquery-3.1.0.min.js"></script>
+<script type="text/javascript"
+        src="http://api.map.baidu.com/api?v=2.0&ak=Kc0IiR6rFdXBMHwjEcL0PCui6H3aSyo2"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var start = {
+            latlng: new BMap.Point(104.06792346,30.67994285),
+            name: "菁蓉国际广场"
+        };
+        var end = {
+            latlng: new BMap.Point(104.083852,30.728413),
+            name: "四川省成都市红星美凯龙"
+        };
+        var opts = {
+            mode: BMAP_MODE_DRIVING,//导航方式：驾车。注:公交、驾车、导航均修改该参数
+            region: "成都"
+        };
+
+        // 创建Map实例
+        var map = new BMap.Map("map");
+        // // 初始化地图,设置中心点坐标和地图级别
+        map.centerAndZoom(new BMap.Point('成都'), 17);
+        var routeSearch = new BMap.RouteSearch();
+        routeSearch.routeCall(start, end, opts);
+    });
+
+</script>
+</html>

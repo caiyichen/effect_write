@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>百果园-地图中选中的城市逐个高亮显示的特效</title>
+    <!--测试-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+
+    <!--引入监听屏幕滚动的插件-->
+    <script src="https://cdn.bootcss.com/waypoints/4.0.1/jquery.waypoints.js"></script>
+    <!--引入百度echart插件-->
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=hKj75K8rsIvoCntq3odBb7yv8FUHw4jc"></script>
+    <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+</head>
+<body style=" height:100%;margin: 0;">
+<div style="height: 1500px;background: yellow"></div>
+<div id="baiguoyuan-map" style="height: 100%;width: 100%"></div>
+</body>
+
+<script type="text/javascript">
+    /**
+     * 网址：http://baiguoyuan1.s.cn.vc
+     * 开发思路
+     * 使用echart先加载默认地图
+     * 再用计时器随机间隔时间像地图的data数据数组中push
+     */
+
+    var bgyMapWidget = {
+        init: false
+    };
+    bgyMapWidget.dom = document.getElementById("baiguoyuan-map");
+    bgyMapWidget.myChart = echarts.init(bgyMapWidget.dom);
+    bgyMapWidget.app = {};
+    bgyMapWidget.option = null;
+
+    // 地图省份数据
+    bgyMapWidget.data = [
+        {name: '南海诸岛', value: 0, itemStyle: {normal: {opacity: 0, label: {show: false}}}}// 隐藏地图右下角的南海诸岛框
+    ];
+
+    // 初始 option
+    bgyMapWidget.option = {
+        baseOption: {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}'
+            },
+            visualMap: {
+                show: false,
+                type: 'continuous',
+                color: ['#019418']
+            },
+
+            series: [
+                {
+                    name: '百果园城市',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,// 平移漫游(缩放):不开启
+                    itemStyle: {
+                        normal: { // 默认样式
+                            borderWidth: 1,
+                            borderColor: 'lightgreen',
+                            color: '#fff',
+                            label: {
+                                show: false
+                            }
+                        },
+                        emphasis: {// 选中样式（高亮）
+                            borderWidth: 1,
+                            borderColor: '#fff',
+                            color: '#019418',
+                            label: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            }
+                        }
+                    },
+                    data: bgyMapWidget.data // 数据
+                }
+            ]
+        }
+    };
+
+    bgyMapWidget.num = 0;
+
+    // 将选中的省份：
+    bgyMapWidget.provinceArr = [
+        {name: '北京', value: 1},
+        {name: '河南', value: 1},
+        {name: '安徽', value: 1},
+        {name: '江苏', value: 1},
+        {name: '上海', value: 1},
+        {name: '浙江', value: 1},
+        {name: '江西', value: 1},
+        {name: '福建', value: 1},
+        {name: '湖北', value: 1},
+        {name: '湖南', value: 1},
+        {name: '广东', value: 1},
+        {name: '广西', value: 1},
+        {name: '四川', value: 1},
+        {name: '重庆', value: 1},
+        {name: '海南', value: 1}
+    ];
+
+    /**
+     * 生成添加数据
+     */
+    bgyMapWidget.addData = function () {
+        bgyMapWidget.data.push(bgyMapWidget.provinceArr[bgyMapWidget.num]);
+        bgyMapWidget.num++;
+
+        // 清除计时器
+        if (bgyMapWidget.num >= bgyMapWidget.provinceArr.length) {
+            clearTimeout(bgyMapWidget.addDataTime);
+        }
+    };
+
+    /**
+     * 计时器模拟异步加载数据
+     */
+    bgyMapWidget.showMap = function () {
+        // 生成添加数据
+        bgyMapWidget.addData();
+        //  填入（更新）数据
+        bgyMapWidget.myChart.setOption({
+            series: [{
+                name: '百果园城市',
+                data: bgyMapWidget.data
+            }]
+        });
+    };
+
+
+    // 绘制地图
+    if (bgyMapWidget.option && typeof bgyMapWidget.option === "object") {
+        bgyMapWidget.myChart.setOption(bgyMapWidget.option, true);
+    }
+
+    // 监听页面滚动，滚动到地图时显示高亮的省份
+    var tplItemDom = $("#baiguoyuan-map");
+    var waypointObj = tplItemDom ? tplItemDom : false;
+    if (waypointObj) {
+        // 图片上滑
+        tplItemDom.waypoint(function (direction) {
+            if (direction === "down" && !bgyMapWidget.init) {
+                bgyMapWidget.init = true;
+                bgyMapWidget.addDataTime = null;
+                for (var i = 0; i < bgyMapWidget.provinceArr.length; i++) {
+                    var time = Math.floor((Math.random() * 2500) + 500); // 省市高亮速度：500~3000毫秒
+                    bgyMapWidget.addDataTime = setTimeout(bgyMapWidget.showMap, time);
+                }
+            }
+        }, {
+            offset: '60%'
+        });
+    }
+</script>
+</html>

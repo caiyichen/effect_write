@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板展示的视差特效</title>
+    <!--为竹子官网百度竞价做的（http://zzjz.s.cn.vc/#P3）-->
+    <!--测试-->
+    <link rel="stylesheet" type="text/css"
+          href="http://bk.st.styleweb.com.cn/editor/??do-basic.css,do-layout.css,do-form.css,do-element.css,element/do-tabText.css,js/wow/animate.css?20179411472"/>
+    <link rel="stylesheet" type="text/css"
+          href="http://bk.st.styleweb.com.cn/editor/js/froala/css/??froala_style.min.css,plugins/image.min.css,plugins/table.min.css,plugins/colors.min.css?201791821032">
+
+    <style>
+        .template-parallax {
+            text-align: center;
+        }
+
+        .template-parallax li {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<!--<ul class="template-parallax">-->
+    <!--<li class="layer" data-depth="0.10"><img-->
+            <!--src="https://cdn2.editmysite.com/images/landing-pages/global/home-weebly4/v2/apps/mid.png"></li>-->
+    <!--<li class="layer" data-depth="0.20"><img-->
+            <!--src="http://cdn2.editmysite.com/images/landing-pages/global/home-weebly4/v2/apps/top.png"></li>-->
+    <!--<li class="layer" data-depth="0.30"><img-->
+            <!--src="http://cdn2.editmysite.com/images/landing-pages/global/home-weebly4/v2/apps/featured.png"></li>-->
+<!--</ul>-->
+
+<ul class="template-parallax">
+<li class="layer" data-depth="0.10"><img src="img/滚屏01.png"></li>
+<li class="layer" data-depth="0.20"><img src="img/滚屏02.png"></li>
+<li class="layer" data-depth="0.30"><img src="img/滚屏03.png"></li>
+</ul>
+
+</body>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.parallax.js"></script>
+
+<script>
+    // 开启视差特效
+    $('.template-parallax').parallax({
+        scalarX: 25,
+        scalarY: 15,
+        frictionX: 0.1,
+        frictionY: 0.1,
+        invertX: false,
+        invertY: false,
+        limitX: 50,
+        limitY: 200
+    })
+</script>
+</html>

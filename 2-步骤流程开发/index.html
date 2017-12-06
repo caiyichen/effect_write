@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="" style="width:600px;height:470px;position: relative;" ng-init="publishInit()">
+    <div class="modal-header">
+        <h4 class="modal-title" id="ngdialog6-aria-labelledby">发布站点</h4>
+    </div>
+    <div class="modal-body">
+        <div class="do-middle">
+            <div class="do-middle-center">
+                <div style="max-height: 420px;overflow-y: auto;">
+                    <div ng-if="nowStepName=='infoDesc'">
+                        <h1>检测到您有未完善的站点信息，完善后即可发布站点</h1>
+                        <div class="m-t-lg">
+                            <button type="button" class="btn btn-success"
+                                    ng-click="nextStep()">立即完善&nbsp;<i class="icon-arrow_forward"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div ng-if="nowStepName=='siteSeo'" class="wrapper">
+                        <form name="siteSeoForm" ng-submit="nextStep()">
+                            <h1>站点SEO设置</h1>
+                            <span class="c999">使网站在搜索引擎中提高关键词排名，有助于吸引更多精准用户访问网站</span>
+                            <div class="m-t">
+                                <div class="inline" style="width:60%;vertical-align: top">
+                                    <div class="do-form-group">
+                                        <label>SEO标题</label>
+                                        <input type="text" class="do-form-control" name="seoName"
+                                               placeholder="请输入SEO标题"
+                                               ng-model="siteData.seo_name"
+                                               ng-maxlength="100">
+                                        <p ng-if="siteSeoForm.seoName.$error.maxlength" class="text-danger">
+                                            <i class="icon-error_outline" style="vertical-align: inherit;"></i>&nbsp;SEO标题最长100个字符
+                                        </p>
+                                    </div>
+                                    <div class="do-form-group">
+                                        <label>SEO简介</label>
+                                        <input type="text" class="do-form-control" name="seoDesc"
+                                               placeholder="请输入SEO简介，最长200个字符"
+                                               ng-model="siteData.seo_desc"
+                                               ng-maxlength="200">
+                                        <p ng-if="siteSeoForm.seoDesc.$error.maxlength" class="text-danger">
+                                            <i class="icon-error_outline" style="vertical-align: inherit;"></i>&nbsp;SEO简介最长200个字符
+                                        </p>
+                                    </div>
+                                    <div class="do-form-group">
+                                        <label>SEO关键字</label>
+                                        <textarea class="form-control" name="seoKeyword"
+                                                  ng-maxlength='200'
+                                                  ng-model="siteData.seo_keyword"
+                                                  placeholder="请输入SEO关键字，并以逗号分隔；最长200个字符"
+                                                  rows="2"
+                                                  style="resize: none;"></textarea>
+                                        <p ng-if="siteSeoForm.seoKeyword.$error.maxlength" class="text-danger">
+                                            <i class="icon-error_outline" style="vertical-align: inherit;"></i>&nbsp;SEO关键字最长200个字符
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="inline align-left"
+                                     style="width: 37%;margin-left: 10px;">
+                                    <p>预览</p>
+                                    <div class="panel"
+                                         style="border: 1px solid #e0e0e0;max-height: 200px;overflow-y: auto">
+                                        <div class="panel-body">
+                                            <p style="color:blue;">{{siteData.seo_name||'这里是网站标题'}}</p>
+                                            <p>
+                                                {{siteData.seo_desc||'这里是网站SEO简介'}}</p>
+                                            <p><span style="color:#27c24c">{{siteData.free_domainname?siteData.free_domainname+'.'+siteData.ext_domain:'www.****.com'}}</span>&nbsp;<u>百度快照</u>-<u>评价</u>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="do-form-group m-t-sm" style="text-align: center;">
+                                <button type="submit" class="btn btn-default"
+                                        style="margin-right: 5px;padding: 10px 18px"
+                                        ng-click="seoSkipAction()">跳过
+                                </button>
+                                <button type="submit" class="btn btn-success"
+                                        ng-disabled="!siteData.seo_name&&!siteData.seo_desc&&!siteData.seo_keyword||siteSeoForm.$invalid">
+                                    立即发布
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div ng-if="nowStepName=='publish'">
+                        <div class="loading-box" ng-hide="stateEnd">
+                            <div class="loading-icon do-checkmark">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px" viewBox="0, 0, 100, 100" id="checkmark">
+                    <g transform="">
+                        <circle class="path" ng-class="{'path-complete':state == 'success'}" fill="none" stroke="#4cae4c" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <circle class="fill" ng-class="{'fill-complete':state == 'success'}" fill="none" stroke="#4cae4c" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <polyline class="check" ng-class="{'check-complete':state == 'success'}" fill="none" stroke="#4cae4c" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10"
+                            points="70,35 45,65 30,52  "/>
+                    </g>
+                </svg>
+                            </div>
+                            <h2 ng-show="state == 'process'">正在发布网站...</h2>
+                            <h2 ng-show="state == 'success'">网站发布成功</h2>
+                        </div>
+                        <div class="loading-box" ng-show="state == 'error'">
+                            <div class="loading-icon">
+                                <button ng-click="publish()">重新发布</button>
+                            </div>
+                            <h2>重新发布</h2>
+                        </div>
+                        <div class="do-publish-content" style="padding:20px 80px 0" ng-class="{'state-end':stateEnd}">
+                            <div class="publish-http">
+                                http://{{siteData.free_domainname}}.{{siteData.ext_domain}}
+                            </div>
+                            <div class="publish-btns">
+                                <ul class="clearfix">
+                                    <li>
+                                        <a href=""
+                                           data-clipboard-text="http://{{siteData.free_domainname}}.{{siteData.ext_domain}}"
+                                           class="copybtn btn-copy">复制网址</a>
+                                    </li>
+                                    <li><a href="http://{{siteData.free_domainname}}.{{siteData.ext_domain}}"
+                                           class="btn-http" target="_blank">访问网站</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="publish-share">
+                                <div class="bdsharebuttonbox" data-tag="share_1"
+                                     style="display: inline-block;overflow: hidden;">
+                                    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                                    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                                </div>
+
+                                <p>赶快将网站分享到微博或微信,获得第一批访客吧！</p>
+                            </div>
+                            <div class="publish-qr" ng-if="siteData.servicerid==1">
+                                <div class="do-left">
+                                    <img src="http://image.styleweb.cn/2016/01/06/fe6c0e92d5ea7e4528f6747229c54a5a.jpe"
+                                         width="90" height="90">
+                                </div>
+                                <div class="do-auto" style="height:90px;">
+                                    <div class="do-middle">
+                                        <div class="do-middle-center" style="text-align: left;padding-left: 14px;">
+                                            关注竹子建站微信二维码，实时查看网站统计、表单留言
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

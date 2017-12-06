@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>demo</title>
+
+
+    <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="tagcanvas.min.js"></script>
+    <script type="text/javascript">
+        /**
+         * 标签的3D旋转特效
+         *
+         * 使用tagcanvas.js插件
+         * http://www.goat1000.com/tagcanvas.php
+         */
+        window.onload = function () {
+            try {
+                var i, et = document.getElementById('tags').childNodes;
+                for (i in et) {
+                    et[i].nodeName == 'A' && et[i].addEventListener('click', function (e) {
+                        e.preventDefault();
+                    });
+                }
+
+                TagCanvas.Start('myCanvas', 'tags', {
+                    textColour: '#000',
+                    outlineColour: '#6bc061',
+                    reverse: true,
+                    depth: 0.3,
+                    dragControl: true,
+                    decel: 0.95,
+                    maxSpeed: 0.05,
+                    initial: [-0.1, 0]
+                });
+            } catch (e) {
+                // something went wrong, hide the canvas container
+                //document.getElementById('myCanvasContainer').style.display = 'none';
+            }
+        };
+    </script>
+
+</head>
+
+<body>
+
+<div class="b_10_3">
+    <canvas width="400" height="400" id="myCanvas"></canvas>
+    <div id="tags">
+        <a href="#">www.zhuzijianzhan.cn.vc</a>
+        <a href="#">www.zzjz.cn.vc</a>
+        <a href="#">www.zhuzi.cn.vc</a>
+        <a href="#">www.jianzhan.cn.vc</a>
+        <a href="#">www.51zhuzi.cn.vc</a>
+        <a href="#">www.zhuzi123.cn.vc</a>
+        <a href="#">www.zhuzis.cn.vc</a>
+        <a href="#">www.91zhuzi.cn.vc</a>
+    </div>
+
+</div>
+
+</body>
+</html>

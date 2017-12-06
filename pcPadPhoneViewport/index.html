@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pc\pad\phone三个设备图样式</title>
+</head>
+<style>
+
+    /*外层宽度变化*/
+    @keyframes allViewPortChangeWidth {
+        /*PC*/
+        3%, 97% {
+            width: 55%;
+        }
+        /*pad*/
+        30%, 36% {
+            width: 24.15%;
+        }
+        /*phone*/
+        63%, 69% {
+            width: 15.65%;
+        }
+    }
+
+    /*外层高度按比例变化*/
+    @keyframes allViewPortChangePaddingTop {
+        /*PC*/
+        3%, 97% {
+            padding-top: 68.3%;
+        }
+        /*pad*/
+        30%, 36% {
+            padding-top: 135.19%;
+        }
+        /*phone*/
+        63%, 69% {
+            padding-top: 170.29%;
+        }
+    }
+
+    /*内层padding变化*/
+    @keyframes allViewPortChangePadding {
+        /*PC*/
+        3%, 97% {
+            padding: 5%;
+        }
+        /*pad*/
+        30%, 36% {
+            padding: 10% 5%;
+        }
+        /*phone*/
+        63%, 69% {
+            padding: 10px;
+        }
+    }
+
+    /*pad移动动画*/
+    @keyframes padPosition {
+        from {
+            opacity: 0;
+            left: 30%;
+            top: 0;
+            z-index: 100;
+        }
+        to {
+            opacity: 1;
+            left: -5%;
+            top: 5%;
+            z-index: 100;
+        }
+    }
+
+    /*phone移动动画*/
+    @keyframes phonePosition {
+        from {
+            opacity: 0;
+            left: 50%;
+            top: 0;
+            z-index: 100;
+        }
+        to {
+            opacity: 1;
+            left: 80%;
+            top: 10%;
+            z-index: 100;
+        }
+    }
+
+    /*pc\pad\phone三个设备图样式*/
+    .smart-site-viewport {
+        position: relative;
+    }
+
+    /*pad*/
+    .smart-site-pad-view-box {
+        width: 24.15%;
+        position: absolute;
+        opacity: 0;
+        animation: padPosition 0.7s cubic-bezier(.55, .3, .24, .5);
+        animation-delay: 0.7s;
+        -webkit-animation-delay: 0.7s;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+    }
+
+    .smart-site-pad-view-box .smart-site-pad-box-auto {
+        padding-top: 135.19%;
+        position: relative
+    }
+
+    .smart-site-pad-view-box .smart-site-pad-box-content {
+        padding: 10% 5%;
+        border-radius: 15px
+    }
+
+    /*pc*/
+    .smart-site-viewport .smart-site-pc-view-box {
+        width: 55%;
+        position: relative;
+        z-index: 0;
+        margin: 0 auto;
+        animation: allViewPortChangeWidth 2.1s cubic-bezier(.55, .3, .24, .5);
+        transform-type: divpreserve-3d;
+    }
+
+    .smart-site-pc-view-box .smart-site-pc-box-auto {
+        padding-top: 68.3%;
+        position: relative;
+    }
+
+    .smart-site-viewport .smart-site-pc-box-auto {
+        animation: allViewPortChangePaddingTop 2.1s cubic-bezier(.55, .3, .24, .5);
+        transform-type: divpreserve-3d;
+    }
+
+    .smart-site-viewport .smart-site-pc-box-content {
+        padding: 5%;
+        border-radius: 15px;
+        animation: allViewPortChangePadding 2.1s cubic-bezier(.55, .3, .24, .5);
+        transform-type: divpreserve-3d;
+    }
+
+    .smart-site-pc-box-content,
+    .smart-site-pad-box-content,
+    .smart-site-phone-box-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0
+    }
+
+    /*phone*/
+    .smart-site-viewport .smart-site-phone-view-box {
+        width: 15.65%;
+        position: absolute;
+        opacity: 0;
+        animation: phonePosition 0.7s cubic-bezier(.55, .3, .24, .5);
+        animation-delay: 1.2s;
+        -webkit-animation-delay: 1.2s;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+    }
+
+    .smart-site-phone-view-box .smart-site-phone-box-auto {
+        padding-top: 170.29%;
+        position: relative
+    }
+
+    .smart-site-phone-view-box .smart-site-phone-box-content {
+        padding: 10px;
+        border-radius: 15px
+    }
+
+    .smart-site-viewport .default-bg-color > div,
+    .smart-site-tpl .default-bg-color > div {
+        background-position: center center;
+        background-repeat: no-repeat;
+        /* 让背景图基于容器大小伸缩 */
+        background-size: cover;
+        height: 100%;
+    }
+
+    .smart-site-viewport .img-shadow-box {
+        margin: 30px 0 10px;
+    }
+
+    /*选模板页*/
+    .smart-site-tpl .smart-site-pc-view-box {
+        width: 60%;
+    }
+
+    .smart-site-tpl .smart-site-pc-box-content {
+        padding: 25px;
+        border-radius: 15px
+    }
+
+    .smart-site-tpl .smart-site-phone-view-box {
+        width: 17.1%;
+        position: relative;
+        right: 50px;
+        bottom: 35px;
+    }
+
+    .smart-site-tpl .smart-site-pc-view-box .img-shadow-box {
+        margin: 40px 0 10px;
+    }
+
+    @media (max-width: 767px) {
+        .smart-site-pc-view-box .smart-site-pc-box-content {
+            padding: 10px;
+            border-radius: 5px
+        }
+
+        .smart-site-phone-view-box .smart-site-phone-box-content {
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+
+    @media (max-width: 450px) {
+        .smart-site-pad-view-box .smart-site-pad-box-content {
+            padding: 10% 5%;
+            border-radius: 5px
+        }
+
+        .smart-site-phone-view-box {
+            right: 25px;
+            bottom: 20px;
+        }
+
+        .smart-site-tpl .smart-site-pc-view-box .img-shadow-box {
+            margin: 15px 0 10px;
+        }
+    }
+</style>
+<body>
+
+<div class="smart-site-viewport" id="scene-parallax">
+    <div class="layer smart-site-pc-view-box" data-depth="0.80">
+        <div class="smart-site-pc-box-auto">
+            <div class="smart-site-pc-box-content default-bg-color">
+                <div style="background-image: url({{pcViewportImgUrl}}?imageMogr2/crop/x900/thumbnail/500x)"></div>
+            </div>
+        </div>
+    </div>
+    <div class="layer smart-site-pad-view-box" data-depth="0.30">
+        <div class="smart-site-pad-box-auto">
+            <div class="smart-site-pad-box-content default-bg-color">
+                <div style="background-image: url({{padViewportImgUrl}}?imageMogr2/crop/x900/thumbnail/500x)"></div>
+            </div>
+        </div>
+    </div>
+    <div class="layer smart-site-phone-view-box" data-depth="0.50">
+        <div class="smart-site-phone-box-auto">
+            <div class="smart-site-phone-box-content default-bg-color">
+                <div style="background-image:url({{phoneViewportImgUrl}}?imageMogr2/crop/x900/thumbnail/500x)"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

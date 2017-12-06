@@ -1,0 +1,79 @@
+<!--app二维码的显示与隐藏 start-->
+<style>
+    .tomorrow-qrcode-box {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 99999 !important;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .tomororw-qrcode {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 22px 25px;
+        text-align: center;
+    }
+
+    .tomorrow-qrcode-close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 28px;
+        padding: 3px;
+        cursor: pointer;
+        color: #999;
+    }
+
+    .tomorrow-qrcode-text {
+        font-size: 16px;
+    }
+
+    .do-text-ht7un img,
+    .do-gotop img {
+        cursor: pointer !important;
+    }
+
+    .do-gotop {
+        background: inherit !important;
+    }
+
+    @media (max-width: 640px) {
+        .tomororw-qrcode {
+            padding: 16px;
+        }
+
+        .tomorrow-qrcode-close-btn {
+            padding: 0;
+        }
+
+        .tomorrow-qrcode-text {
+            font-size: 14px;
+        }
+    }
+</style>
+<div class="tomorrow-qrcode-box">
+    <div class="tomororw-qrcode">
+        <img src="http://bk.image.styleweb.com.cn/2017/10/16/17061_j8tux2ct.png?imageView2/2/w/299/q/100" alt="">
+        <span class="icon-close tomorrow-qrcode-close-btn" title="关闭"></span>
+        <p class="tomorrow-qrcode-text">扫描二维码，打开APP</p>
+    </div>
+</div>
+<script>
+    $('.do-text-ht7un img').on('click', function () {
+        $('.tomorrow-qrcode-box').show();
+    });
+    $('.tomorrow-qrcode-close-btn').on('click', function () {
+        $('.tomorrow-qrcode-box').hide();
+    });
+
+    // 返回顶部图标更改
+    $('.do-gotop').html('<img src="http://bk.image.styleweb.com.cn/2017/10/16/17061_j8tux2d9.png?imageView2/0/w/390">');
+</script>
+<!--app二维码的显示与隐藏 end!-->

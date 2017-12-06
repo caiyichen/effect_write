@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+    function test() {
+        // bar(…)在test(…)中声明和在window中声明结果完全不一样。作用域只与函数声明时的位置有关！
+        function bar(a) {
+            var i = 3;
+            return a + 2;
+        }
+
+        for (var i = 0; i < 10; i++) {
+            var a = bar(i);
+            console.log(i, a);
+        }
+    }
+
+    test();
+
+</script>
+</html>

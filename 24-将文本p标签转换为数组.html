@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var text = '<p>&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p><p>今天下雨了今天&lt;/p&gt;1111111&lt;/p&gt;</p><p>今天下雨了今天</p><p>今天下雨了今天</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p><p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"><br></p>';
+
+    // 删除<br>和空<p></p>
+    var text2 = text.replace(/<br>/ig, '').replace(/<p><\/p>/ig, '');
+    console.log(text2);
+
+    // 筛选出图片
+    var pImgReg = /<p><img\sclass=\"fr-dib\"\ssrc=[\'"](.+?)[\'"]\><\/p>/ig;
+    var imgARR = text2.match(pImgReg);
+    var text3 = text2.replace(pImgReg, '');
+    console.log('imgARR:', imgARR);
+
+
+    var pReg = /<p>((\w|\W)*?)<\/p>/ig;
+    var text4 = text3.match(pReg);
+    console.log(text4);
+
+    // 去除p标签
+    text4.map(function (item, key) {
+        text4[key] = item.replace(/<p>/ig, '').replace(/<\/p>/ig, '');
+    });
+    console.log("无p标签的数组：",text4);
+
+</script>
+</html>

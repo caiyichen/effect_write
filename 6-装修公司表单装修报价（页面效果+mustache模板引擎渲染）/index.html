@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6-装修表单报价效果</title>
+    <!--为"帮忙装修装饰工程有限公司"做的（http://bmzx.s.cn.vc/budge）-->
+
+    <!--测试-->
+    <link rel="stylesheet" type="text/css"
+          href="http://bk.st.styleweb.com.cn/editor/??do-basic.css,do-layout.css,do-form.css,do-element.css,element/do-tabText.css,js/wow/animate.css?20179411472"/>
+    <link rel="stylesheet" type="text/css"
+          href="http://bk.st.styleweb.com.cn/editor/js/froala/css/??froala_style.min.css,plugins/image.min.css,plugins/table.min.css,plugins/colors.min.css?201791821032">
+
+    <style>
+        .do-text-hns3y,
+        .do-text-hpunj {
+            display: none;
+        }
+
+        .decorate {
+            padding: 10px;
+        }
+
+        .decorate-color {
+            color: #c33838;
+        }
+
+        .decorate .must-prompt {
+            color: #c33838;
+        }
+
+        .decorate-box {
+            box-shadow: 0px 0px 23px #c3c0c0;
+            border: 1px solid #cccccc;
+        }
+
+        .decorate-box:first-child {
+            border-right-width: 0;
+        }
+
+        .decorate-left .do-panelcol {
+            padding: 30px 0 30px 20px
+        }
+
+        .decorate-right .do-panelcol {
+            padding: 30px 20px 30px 0
+        }
+
+        .decorate .do-form-item:not(.house-type-select) {
+            width: 49% !important;
+            padding-right: 30px;
+        }
+
+        .decorate .do-form-item {
+            padding-right: 30px;
+        }
+
+        .house-type-select select {
+            width: 32% !important;
+            display: inline-block;
+        }
+
+        .start-cal-btn {
+            background: #c33838;
+            color: #fff;
+            margin: 10px 0 0;
+        }
+
+        .people-cal-btn {
+            border: 1px solid #c33838;
+            background: transparent;
+            color: #c33838;
+            box-shadow: initial;
+            font-weight: 600;
+        }
+
+        .start-cal-btn:hover,
+        .start-cal-btn:focus {
+            color: #fff;
+            background: #e21313;
+        }
+
+        .people-cal-btn:hover {
+            color: #ac171a;
+        }
+
+        .decorate-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            box-sizing: border-box;
+        }
+
+        .decorate .total-price {
+            background-color: rgb(230, 230, 230);
+            font-size: 38px;
+            line-height: 1.8
+        }
+
+        .decorate .total-price-name {
+            font-size: 28px;
+            vertical-align: text-top;
+        }
+
+        .decorate .form-item-title {
+            margin-right: 2px;
+            vertical-align: text-bottom;
+        }
+
+        .table-responsive {
+            min-height: .01%;
+            overflow-x: auto;
+        }
+
+        @media screen and (max-width: 767px) {
+            .table-responsive {
+                width: 100%;
+                margin-bottom: 15px;
+                overflow-y: hidden;
+                -ms-overflow-style: -ms-autohiding-scrollbar;
+                border: 1px solid #ddd;
+            }
+
+            .table-responsive > .table {
+                margin-bottom: 0;
+            }
+
+            .table-responsive > .table > thead > tr > th,
+            .table-responsive > .table > tbody > tr > th,
+            .table-responsive > .table > tfoot > tr > th,
+            .table-responsive > .table > thead > tr > td,
+            .table-responsive > .table > tbody > tr > td,
+            .table-responsive > .table > tfoot > tr > td {
+                white-space: nowrap;
+            }
+
+            .table-responsive > .table-bordered {
+                border: 0;
+            }
+
+            .table-responsive > .table-bordered > thead > tr > th:first-child,
+            .table-responsive > .table-bordered > tbody > tr > th:first-child,
+            .table-responsive > .table-bordered > tfoot > tr > th:first-child,
+            .table-responsive > .table-bordered > thead > tr > td:first-child,
+            .table-responsive > .table-bordered > tbody > tr > td:first-child,
+            .table-responsive > .table-bordered > tfoot > tr > td:first-child {
+                border-left: 0;
+            }
+
+            .table-responsive > .table-bordered > thead > tr > th:last-child,
+            .table-responsive > .table-bordered > tbody > tr > th:last-child,
+            .table-responsive > .table-bordered > tfoot > tr > th:last-child,
+            .table-responsive > .table-bordered > thead > tr > td:last-child,
+            .table-responsive > .table-bordered > tbody > tr > td:last-child,
+            .table-responsive > .table-bordered > tfoot > tr > td:last-child {
+                border-right: 0;
+            }
+
+            .table-responsive > .table-bordered > tbody > tr:last-child > th,
+            .table-responsive > .table-bordered > tfoot > tr:last-child > th,
+            .table-responsive > .table-bordered > tbody > tr:last-child > td,
+            .table-responsive > .table-bordered > tfoot > tr:last-child > td {
+                border-bottom: 0;
+            }
+        }
+
+        @media only screen and (max-width: 640px) {
+            .decorate-right {
+                position: relative;
+            }
+
+            .decorate-box:first-child {
+                border-right-width: 1px;
+            }
+
+            .decorate-left .do-panelcol,
+            .decorate-right .do-panelcol {
+                padding: 30px 10px
+            }
+
+            .decorate .do-form-item:not(.house-type-select) {
+                width: 100% !important;
+                padding-right: 0;
+            }
+
+            .house-type-select select {
+                width: 100% !important;
+            }
+
+            .total-price-name {
+                display: block;
+            }
+
+            .total-price {
+                line-height: 1.3 !important;
+                padding: 20px;
+            }
+
+            .decorate-man-table,
+            .decorate-material-table {
+                width: 200% !important;
+            }
+
+            .fr-view table {
+                max-width: initial !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="decorate">
+    <div class="do-row">
+        <div class="do-col-6 decorate-box decorate-left">
+            <div class="do-panelcol">
+                <div class="decorate-title align-center" style="margin-bottom: 25px">
+                    <div class="decorate-color f28" style="font-weight: 700">一键免费获得装修报价</div>
+                    <div>今天已有<span class="decorate-color">1120</span>位业主获得装修预算</div>
+                </div>
+                <div class="do-element-forms">
+                    <form class="form do-forms do-product-box list" action="#" name="decorateCalFom">
+                        <div class="do-form-group form-select do-form-item house-type-select"
+                             style="width: 100%!important;">
+                            <label><span class="form-item-title">房屋户型</span><span class='must-prompt'>*</span></label>
+                            <div class="do-select icon-arrow_drop">
+                                <select class="do-form-control" name="roomNum" id="roomNum">
+                                    <option value="1">1室</option>
+                                    <option value="2">2室</option>
+                                    <option value="3">3室</option>
+                                    <option value="4">4室</option>
+                                    <option value="5">5室</option>
+                                    <option value="6">6室</option>
+                                </select>
+                                <select class="do-form-control" name="kitchenNum" id="kitchenNum">
+                                    <option value="1">1厨</option>
+                                    <option value="2">2厨</option>
+                                </select>
+                                <select class="do-form-control" name="toiletNum" id="toiletNum">
+                                    <option value="1">1卫</option>
+                                    <option value="2">2卫</option>
+                                    <option value="3">3卫</option>
+                                </select></div>
+                        </div>
+                        <div class="do-form-group form-input do-form-item">
+                            <label><span class="form-item-title">房屋总面积</span><span class='must-prompt'>*</span></label>
+                            <input type="number" class="form-control required"
+                                   name="houseArea"
+                                   id="houseArea" placeholder="请输入房屋总面积(平方米)"></div>
+                        <div class="do-form-group form-input do-form-item">
+                            <label><span class="form-item-title">客厅面积</span><span class='must-prompt'>*</span></label>
+                            <input type="number" class="form-control required"
+                                   name="livingRoomArea"
+                                   id="livingRoomArea" placeholder="请输入客厅面积(平方米)"></div>
+                        <div class="do-form-group form-input do-form-item">
+                            <label><span class="form-item-title">卧室面积</span><span class='must-prompt'>*</span></label>
+                            <input type="number" class="form-control required"
+                                   name="BedroomArea"
+                                   id="BedroomArea" placeholder="请输入卧室面积(平方米)"></div>
+                        <div class="do-form-group form-input do-form-item">
+                            <label><span class="form-item-title">厨房面积</span><span class='must-prompt'>*</span></label>
+                            <input type="number" class="form-control required"
+                                   name="kitchenArea"
+                                   id="kitchenArea" placeholder="请输入厨房面积(平方米)"></div>
+                        <div class="do-form-group form-input do-form-item">
+                            <label><span class="form-item-title">卫生间面积</span><span class='must-prompt'>*</span></label>
+                            <input type="number" class="form-control required"
+                                   name="toiletArea"
+                                   id="toiletArea" placeholder="请输入卫生间面积(平方米)"></div>
+                        <div class="do-form-group align-center">
+                            <button class="btn start-cal-btn" type="submit">开始计算</button>
+                        </div>
+                    </form>
+                    <p class="decorate-color align-center"><span class='must-prompt'>*</span>我们将会对您的信息进行严格保密</p>
+                </div>
+            </div>
+        </div>
+        <div class="do-col-6 decorate-box decorate-right">
+            <div class="do-middle">
+                <div class="do-middle-center">
+                    <div class="do-panelcol">
+                        <div style="">
+                            <p class="f28 total-price" style="font-weight: bold"><span
+                                    class="total-price-name">人工预算为</span>&nbsp;<span
+                                    class="decorate-color">¥ <span class="total-price-man">0000.00</span></span></p>
+                            <p class="f28 total-price" style="font-weight: bold"><span
+                                    class="total-price-name">材料预算为</span>&nbsp;<span
+                                    class="decorate-color">¥ <span class="total-price-material">0000.00</span></span>
+                            </p>
+                            <p class=" align-center" style="margin-bottom: 20px">以上价格仅供参考，实际价格以公司报价为准</p>
+                            <a class="btn people-cal-btn" href="http://bmzx.s.cn.vc/about">进行人工精准报价&nbsp;&gt;&gt;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="decorate do-section do-area fr-element fr-view" do-page-width="1">
+        <div class="do-row" style="width: 100%">
+            <div class="do-row">
+                <div class="do-col-12 do-D-c-40-41" id="D-c-40-41">
+                    <div class="do-panelcol">
+                        <p class="decorate-detail-title" style="text-align: center;margin: 50px 0 30px"><span
+                                style="font-size: 24px; color: rgb(51, 51, 51);">装修价格清单表</span></p>
+                        <div class="table-responsive">
+                            <table class="decorate-man-table"></table>
+                        </div>
+                        <div class="table-responsive" style="margin-top: 60px">
+                            <table class="decorate-material-table" style="width: 100%;"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!--引入mustache.js模板引擎 https://github.com/janl/mustache.js-->
+<script src="js/mustache.js"></script>
+<!--网上可直接引入的mustache.js的CDN：-->
+<!--<script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.js"></script>-->
+<script src="js/test.js"></script>
+</html>
+

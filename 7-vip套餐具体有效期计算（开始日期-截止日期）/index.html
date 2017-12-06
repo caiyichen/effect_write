@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会员中心-vip套餐具体有效期计算（开始日期-截止日期）</title>
+</head>
+<body>
+</body>
+<script>
+    /**
+     * 升级vip套餐时，提示用户套餐购买后有效期（开始时间，截止时间）。
+     * 如2017-9-1日早上八点购买了vip套餐A，而A套餐的有效期是7天。则提示用户"有效期：7天（2017-9-1 08:00 至2017-9-9 00:00）
+     * 计算规则：不论是在当天的哪个时间段购买，前端计算的开始时间均推迟到第二天早晨的凌晨00:00（即当天晚上结束的时刻，这样会多算当天vip时间，没关系的）。
+     * 所以就是从2017-9-2的00：00为计算的开始时间，有效期为7天,则2+7=9,所以截止日期为2017-9-9 00:00。
+     */
+    function getDetailDate(curDate) {
+        var year = curDate.getFullYear();// 年
+        var month = (curDate.getMonth() + 1) < 10 ? "0" + (curDate.getMonth() + 1) : (curDate.getMonth() + 1);// 月
+        var day = curDate.getDate() < 10 ? "0" + curDate.getDate() : curDate.getDate();// 日
+        return year + "-" + month + "-" + day;
+    }
+
+    /**
+     * 获取当前日期
+     * @param isFullTime 是否需要完整的日期格式（年月日时分）
+     */
+    function getCurDate(isFullTime) {
+        var curDate = new Date();
+        var detailDate = getDetailDate(curDate);
+        if (!isFullTime) {
+            return detailDate;
+        }
+        var hh = curDate.getHours(); // 时
+        var mm = curDate.getMinutes();// 分
+        return detailDate + ' ' + hh + ':' + mm;
+    }
+
+    /**
+     * 获取vip套餐实际天数
+     * @param seconds 秒
+     * @return {number} 天
+     */
+    function getVipDays(seconds) {
+        return Math.ceil(seconds / 86400);
+    }
+
+    /**
+     * 获取离当前日期dayInterval天的日期
+     */
+    function getDateFromCurrentDate(fromDate, dayInterval) {
+        var curDate = new Date(Date.parse(fromDate.replace(/-/g, "/")));
+        curDate.setDate(curDate.getDate() + dayInterval);
+        var detailDate = getDetailDate(curDate);
+        return detailDate + ' 00:00';
+    }
+
+    // 获取当前日期（仅年月日）
+    var nowDate = getCurDate(false);
+    // 获取当前完整日期
+    var nowFullDate = getCurDate(true);
+
+    // 根据秒获取距离的天数
+    var seconds = 31536000;  // 604800：一周   31536000：一年
+    var vipDays = getVipDays(seconds);
+    var dayInterval = vipDays + 1;
+
+    // 获取离当前日期dayInterval天的日期
+    var time = getDateFromCurrentDate(nowDate, dayInterval);
+
+    console.log('vip套餐实际天数:', vipDays, '距离天数：', dayInterval);
+    console.log('当前日期:', nowDate, '当前完整日期:', nowFullDate, '截止日期:', time);
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        .do-h6n38 {
+            margin: 190px auto;
+        }
+
+        .do-h6n38 .do-element-image {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="do-h6n38">
+    <div class="do-element-image" style="position: relative;width:100%;height:480px"></div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/tagcanvas.min.js"></script>
+<script type="text/javascript">
+    /**
+     * 图片集的3D旋转特效
+     *
+     * 使用tagcanvas.js插件
+     * http://www.goat1000.com/tagcanvas.php
+     */
+    window.onload = function () {
+        // 浏览器宽度
+        if (document.body.clientWidth > 640 && document.body.clientWidth < 1250) {
+            $('.do-h6n38').find('.do-element-image').html('<canvas width="635" height="400" id="index-tags-canvas"></canvas>');
+        } else if (document.body.clientWidth >= 1250) {
+            $('.do-h6n38').find('.do-element-image').html('<canvas width="1270" height="480" id="index-tags-canvas"></canvas>');
+        }
+
+        if (document.body.clientWidth > 640) {
+            $('.do-h6n38').find('.do-element-image').append('<div id="index-tags" style="display: none"><a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwg2.png?imageView2/0/w/390"></a><a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwg8.png?imageView2/0/w/390"></a><a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwgp.png?imageView2/0/w/390"></a><a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwgu.png?imageView2/0/w/390"></a> <a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwgv.png?imageView2/0/w/390"></a> <a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwgw.png?imageView2/0/w/390"></a> <a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwo4.png?imageView2/0/w/390"></a> <a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwo6.png?imageView2/0/w/390"></a> <a href="#"><img src="http://bk.image.styleweb.com.cn/2017/9/2/143_j72qjwok.png?imageView2/0/w/390"></a></div>');
+
+            setTimeout(function () {
+                try {
+                    var i, et = document.getElementById('index-tags').childNodes;
+                    for (i in et) {
+                        et[i].nodeName == 'A' && et[i].addEventListener('click', function (e) {
+                            e.preventDefault();
+                        });
+                    }
+
+                    TagCanvas.Start('index-tags-canvas', 'index-tags', {
+                        outlineColour: '#FFF',
+                        reverse: true,
+                        depth: 0.3,
+                        decel: 0.95,
+                        maxSpeed: 0.04,
+                        initial: [0.1, -0.1],
+                        imageRadius: 8,
+                        outlineRadius: 8,
+                        imageScale: null,
+                        fadeIn: 1000,
+                        shadow: '#504f4f',
+                        shadowBlur: 3,
+                        clickToFront: 600,// 点击时前置
+                        wheelZoom: false,// 禁止鼠标滚动缩放
+//                    dragControl: true,
+//                    outlineMethod: 'block',
+                        shape: 'hcylinder'
+                    });
+                } catch (e) {
+                }
+            }, 1000);
+        }
+    }
+</script>
+</html>

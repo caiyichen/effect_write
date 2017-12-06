@@ -1,0 +1,242 @@
+<!--店面搜索+导航功能-->
+<style>
+    #select-shop .shop-list {
+        margin-top: 12px;
+    }
+
+    #select-shop .shop-list li {
+        line-height: 35px;
+        padding-left: 18px;
+        border-bottom: 1px #e9e9e9 solid;
+        cursor: pointer;
+    }
+
+</style>
+<div id="select-shop">
+    <div class="select-shop-box do-row">
+        <div class="do-col-6">
+            <select class="do-form-control select-province"></select>
+        </div>
+        <div class="do-col-6">
+            <select class="do-form-control select-city"></select>
+        </div>
+        <ul class="do-col-12 shop-list"></ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Kc0IiR6rFdXBMHwjEcL0PCui6H3aSyo2"></script>
+
+<script>
+    var userPosition = {addressName: '', longitude: []},// longitude[0]：经度， longitude[1]：纬度
+            shopPosition = {addressName: '', longitude: [], city: ''},
+            selectedProv = {},
+            selectedCity = {},
+            provinceList = [
+                {
+                    "id": 1,
+                    "name": "上海市",
+                    "city": [{
+                        "id": 2,
+                        "name": "青浦区",
+                        "shop": [{
+                            "id": 3,
+                            "name": "上海市吉盛伟邦国际家具村—东方新语整体家居生活馆",
+                            "address": "上海市青浦区嘉松中路5369号吉盛伟邦国际家具村C2E101",
+                            "point": {
+                                "lng": "121.234343",// 经度
+                                "lat": "31.16841"// 纬度
+                            }
+                        }]
+                    }]
+                },
+                {
+                    "id": 4,
+                    "name": "深圳市",
+                    "city": [{
+                        "id": 5,
+                        "name": "罗湖区",
+                        "shop": [{
+                            "id": 6,
+                            "name": "深圳艺展中心-东方新语整体家居生活馆",
+                            "address": "深圳市罗湖区笋岗展艺路艺展中心一期九楼 939-941",
+                            "point": {
+                                "lng": "114.112358",
+                                "lat": "22.56758"
+                            }
+                        }]
+                    }]
+                },
+                {
+                    "id": 7,
+                    "name": "四川省",
+                    "city": [
+                        {
+                            "id": 8,
+                            "name": "成都市",
+                            "shop": [
+                                {
+                                    "id": 9,
+                                    "name": "成都红星美凯龙碧云路店",
+                                    "shop": "成都红星美凯龙碧云路店（二环店）四楼",
+                                    "point": {
+                                        "lng": "104.0364",
+                                        "lat": "30.644763"
+                                    }
+                                }
+                            ]
+                        }]
+                }
+            ];
+
+    /**
+     * 百度地图API功能：获取用户当前位置
+     */
+    function getUserCurrentPosition() {
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function (r) {
+            if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                var geoc = new BMap.Geocoder();
+                var pt = r.point;
+                userPosition.longitude = [r.point.lng, r.point.lat];
+                geoc.getLocation(pt, function (rs) {
+                    var addComp = rs.addressComponents;
+                    userPosition.addressName = addComp.district + addComp.street + addComp.streetNumber;
+
+                    for (var i = 0; i < $(".select-province option").length; i++) {
+                        if ($(".select-province").get(0).options[i].text == addComp.province) {
+                            $(".select-province").get(0).options[i].selected = true;
+                            changeProvince(parseInt($(".select-province").val()));
+                        }
+                    }
+                });
+            }
+            else {
+                alert('失败！' + this.getStatus());
+            }
+        }, {enableHighAccuracy: true});
+    }
+
+    /**
+     * 新选择省份
+     * @param selectedProvId 选择的省份id
+     */
+    function changeProvince(selectedProvId) {
+        selectedProv = provinceList.filter(function (prov) {
+            return prov.id == selectedProvId
+        })[0];
+        showCitys(selectedProv.city);
+        changeCity(selectedProv.city[0].id);
+    }
+
+    /**
+     * 新选择城市
+     * @param selectedCityId 选择的城市id
+     */
+    function changeCity(selectedCityId) {
+        selectedCity = selectedProv.city.filter(function (city) {
+            return city.id == selectedCityId
+        })[0];
+        showShops(selectedCity.shop);
+    }
+
+    /**
+     * 加载百度地图导航
+     * @param userPosition
+     * @param shopPosition
+     */
+    function loadBaiduMap(userPosition, shopPosition) {
+        if (userPosition.longitude.length == 0) {
+            alert('正在获取您当前位置信息，请稍后');
+            return;
+        }
+
+        userPosition.addressName = userPosition.addressName.trim();
+        shopPosition.addressName = shopPosition.addressName.trim();
+        var orgin = 'latlng:' + userPosition.longitude[1] + ',' + userPosition.longitude[0] + '|name:' + userPosition.addressName,
+                destination = 'latlng:' + shopPosition.longitude[1] + ',' + shopPosition.longitude[0] + '|name:' + shopPosition.addressName,
+                url = 'http://api.map.baidu.com/direction?origin=' + orgin + '&destination=' + destination + '&mode=driving&region=' + shopPosition.city + '&output=html';
+
+        location.href = url;
+    }
+
+    /**
+     * 点击选择某家商店:加载百度地图导航页面
+     */
+    function bindSelectShopEvent() {
+        $('.shop-list li').on('click', function () {
+            shopPosition.addressName = $(this).text();
+            shopPosition.longitude = [$(this).attr('lng'), $(this).attr('lat')];
+            shopPosition.city = selectedCity.name;
+
+            var shopId = $(this).attr("shopId");
+            if (shopId != null && shopId != "") {
+                loadBaiduMap(userPosition, shopPosition);
+            }
+        });
+    }
+
+    /**
+     * 绑定省市下拉框更改选项事件
+     */
+    function bindSelectEvent() {
+        $(".select-province").change(function () {
+            var selectProvId = parseInt($(this).val());
+            changeProvince(selectProvId);
+        });
+
+        $(".select-city").change(function () {
+            var selectedCityId = parseInt($(this).val());
+            changeCity(selectedCityId);
+        });
+    }
+
+    /**
+     * 渲染城市下拉框
+     * @param cityArr
+     */
+    function showCitys(cityArr) {
+        $(".select-city").empty();
+        for (var i = 0; i < cityArr.length; i++) {
+            var city = cityArr[i];
+            $(".select-city").append($("<option value='" + city.id + "'>" + city.name + "</option>"));
+        }
+    }
+
+    /**
+     * 渲染商店列表
+     * @param shopArr
+     */
+    function showShops(shopArr) {
+        var html = '';
+        for (var i = 0; i < shopArr.length; i++) {
+            var shop = shopArr[i];
+            html += "<li lng=" + shop.point.lng + " lat=" + shop.point.lat + " shopId=" + shop.id + "><i class='icon-map'></i> " + shop.name + "</li>";
+        }
+        $('.shop-list').html(html);
+
+        bindSelectEvent();
+        bindSelectShopEvent();
+    }
+
+    /**
+     * 初始化省、市下拉框和商店列表
+     */
+    function showSelectList() {
+        for (var i = 0; i < provinceList.length; i++) {
+            var province = provinceList[i];
+            $(".select-province").append($("<option value='" + province.id + "'>" + province.name + "</option>"));
+        }
+
+        $(".select-province").get(0).options[1].selected = true;
+        changeProvince(parseInt($(".select-province").val()));
+    }
+
+    function init() {
+        getUserCurrentPosition();
+        showSelectList();
+    }
+
+    $(function () {
+        init();
+    })
+</script>

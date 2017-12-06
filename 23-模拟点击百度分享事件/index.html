@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟点击百度分享事件</title>
+</head>
+<body>
+<!--隐藏的真实的百度分享-->
+<div class="bdsharebuttonbox" data-tag="share_1" style="display: none">
+    <a class="linkedin" data-cmd="linkedin"></a>
+    <a class="weixin" data-cmd="weixin"></a>
+    <a class="bds_tsina" data-cmd="tsina"></a>
+    <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+</div>
+
+<!--模拟的按钮集-->
+<ul class="story-share">
+    <li>
+        <a class="story-share-linkedin"><img src="http://bk.image.styleweb.com.cn/2017/11/25/143_jaeymsx2.png"
+                                             alt=""></a>
+        <a class="story-share-weixin"><img src="http://bk.image.styleweb.com.cn/2017/11/25/143_jaeymswx.png" alt=""></a>
+        <a class="story-share-tsina"><img src="http://bk.image.styleweb.com.cn/2017/11/25/143_jaeymsxc.png" alt=""></a>
+        <a class="story-share-qqzone"><img src="http://bk.image.styleweb.com.cn/2017/11/25/143_jaeymsxc.png" alt=""></a>
+    </li>
+</ul>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+
+<script>
+    // 配置百度分享
+    window._bd_share_config = {
+        common: {
+            bdText: '故事会',
+            bdUrl: 'http://zhangyongyi.s.cn.vc/',
+            bdPic: ''
+        },
+        share: [{
+            "bdSize": 16
+        }]
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+
+    /**
+     * simulateShareClick 模拟点击百度分享事件
+     */
+    function simulateShareClick() {
+        $('.story-share').find('a').on('click', function () {
+                    var index = $(this).index();
+                    switch (index) {
+                        case 0:
+                            document.getElementsByClassName('linkedin')[0].click();
+                            break;
+                        case 1:
+                            document.getElementsByClassName('weixin')[0].click();
+                            break;
+                        case 2:
+                            document.getElementsByClassName('bds_tsina')[0].click();
+                            break;
+                    }
+                }
+        )
+    }
+    simulateShareClick();
+</script>
+</html>

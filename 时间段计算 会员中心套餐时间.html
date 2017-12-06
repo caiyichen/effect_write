@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * 获取vip套餐的具体有效期
+     * @param selectedGoodSku
+     * @return {string}
+     */
+    let getValidTime = (selectedGoodSku)=> {
+        /**
+         * 日期拼接
+         * @param curDate
+         * @return {string}
+         */
+        function getDetailDate(curDate) {
+            var year = curDate.getFullYear();// 年
+            var month = (curDate.getMonth() + 1) < 10 ? "0" + (curDate.getMonth() + 1) : (curDate.getMonth() + 1);// 月
+            var day = curDate.getDate() < 10 ? "0" + curDate.getDate() : curDate.getDate();// 日
+            return year + "-" + month + "-" + day;
+        }
+
+        /**
+         * 获取当前日期
+         * @param isFullTime 是否需要完整的日期格式（年月日时分）
+         */
+        function getCurDate(isFullTime) {
+            var curDate = new Date();
+            var detailDate = getDetailDate(curDate);
+            if (!isFullTime) {
+                return detailDate;
+            }
+            var hh = curDate.getHours() < 10 ? "0" + curDate.getHours() : curDate.getHours(); // 时
+            var mm = curDate.getMinutes() < 10 ? "0" + curDate.getMinutes() : curDate.getMinutes();// 分
+            return detailDate + ' ' + hh + ':' + mm;
+        }
+
+        /**
+         * 获取离当前日期dayInterval天的日期
+         */
+        function getDateFromCurrentDate(fromDate, dayInterval) {
+            var curDate = new Date(Date.parse(fromDate.replace(/-/g, "/")));
+            curDate.setDate(curDate.getDate() + dayInterval);
+            var detailDate = getDetailDate(curDate);
+            return detailDate + ' 00:00';
+        }
+
+
+        let timeNum = getGoodBuyTimeService(selectedGoodSku.time_length).detailTime;
+        // 根据vip套餐有效的秒数获取天数
+        var vipDays = Math.ceil(selectedGoodSku.time_length / 86400);
+        // vip套餐天数间隔
+        var dayInterval = vipDays + 1;
+        // 获取当前日期（仅年月日）
+        var nowDate = getCurDate(false);
+        // 获取当前完整日期
+        var nowFullDate = getCurDate(true);
+        // 获取离当前日期dayInterval天的日期
+        var Deadline = getDateFromCurrentDate(nowDate, dayInterval);
+
+        return `${timeNum} (${nowFullDate} 至 ${Deadline})`;
+    };
+</script>
+</html>

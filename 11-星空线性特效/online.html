@@ -1,0 +1,47 @@
+<!--banner背景的线性特效代码 start-->
+<style>
+    .do-slide-bg-conter {
+        background-image: none !important
+    }
+
+    .line-cavas-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #canvas {
+        width: 100%;
+        height: inherit;
+        overflow: hidden;
+        background-color: #1a1724;
+    }
+</style>
+
+<div class="banner-swiper"></div>
+<script src="http://www.5iweb.com.cn/statics/js/jquery.1.7.1.min.js" type="text/javascript"></script>
+
+<script>
+    $('.banner-swiper').append('<div class="line-cavas-box"><div id="canvas" class="line-canvas gradient-box"></div></div>');
+</script>
+
+<script src="http://bk.st.styleweb.com.cn/editor/lib/three.min.js"></script>
+
+<script src="js/projector.js"></script>
+<script src="js/canvas-renderer.js"></script>
+
+<script src="js/3d-lines-animation.js"></script>
+
+<script src="js/color.js"></script>
+
+<script>
+    // 这个特效有个问题：
+    // 当是一屏一屏的滑动（如）时，此特效都是正常的，而且手机下可以从一屏滑动到下一屏。
+    // 但当是正常的网页（即非一屏一屏的）时，手机下就无法滑动整个页面了。是因为手机下在此特效所在页面滑动时，不是在滑动网页，而是在此canvas特效里滑动。
+    // 所以我的临时解决办法是：当为正常的网页时，就阻止次特效在手机下的touch处理事件（即3d-lines-animation.js中的 onDocumentTouchStart（）和onDocumentTouchMove（）。）
+</script>
+
+<!--banner背景的线性特效代码 end!-->
