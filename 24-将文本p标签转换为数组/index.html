@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * frala文档1:https://www.froala.com/wysiwyg-editor/examples/image-styles
+     * frala文档2 API：https://www.froala.com/wysiwyg-editor/docs/options#imageDefaultDisplay
+     * @type {string}
+     */
+            //    // frala文本编辑器配置项
+            //    $scope.froalaOptions = {
+            //        language: 'zh_cn',
+            //        toolbarInline: false,
+            //        charCounterCount: false,
+            //        placeholderText: '请在此输入内容',
+            //        height: '30rem',
+            //        heightMin: '10rem',
+            //        toolbarButtons: ['insertImage'],
+            //        imageEditButtons: ['imageReplace', 'imageRemove'],// 图片编辑按钮：只允许"更换"、"删除"
+            //        imageDefaultDisplay: 'block'// 默认为块级元素(添加class"fr-dib")
+            //    };
+
+    var text = '<p>&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p>' +
+                    '<p>今天下雨了今天&lt;/p&gt;1111111&lt;/p&gt;</p>' +
+                    '<p>今天下雨了今天</p>' +
+                    '<p>今天下雨了今天</p>' +
+                    '<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>' +
+                    '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"><br></p>';
+
+//
+//    text = '<p>1今天下雨了今天</p>' +
+//            '<p>2今天下雨了今天<img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/3/31/_j0xiqhrf.jpg?imageView2/2/w/1800"></p>' +
+//            '<p><br></p>' +
+//            '<p>今天下雨了今天</p>' +
+//            '<p><br></p>' +
+//            '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/4/1/_j0ymit6b.jpg?imageView2/2/w/1800"></p>' +
+//            '<p>3今天下雨了今天&lt;p&gt;4今天下雨了今天&lt;/p&gt;</p>' +
+//            '<p>5你好&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p>' +
+//            '<p>&lt;br&gt;</p>' +
+//            '<p>6今天下雨了今天今天下雨了今天今天下雨了今天</p>';
+
+
+//    var noImgContent = '<p>1今天下雨了今天</p>' +
+//            '<p>2今天下雨了今天</p>' +
+//            '<p>今天下雨了今天</p>' +
+//            '<p></p>' +
+//            '<p>3今天下雨了今天&lt;p&gt;4今天下雨了今天&lt;/p&gt;</p>' +
+//            '<p>5你好&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p>' +
+//            '<p>&lt;br&gt;</p>' +
+//            '<p>6今天下雨了今天今天下雨了今天今天下雨了今天</p>';
+
+    // 换行:<p><br></p>
+    // 在文本编辑器中输入标签，会被转义 如输入"<p>你好</p>",会被转义为：&lt;p&gt;你好&lt;/p&gt; 所以不用担心用户直接输入标签的问题。
+    // 行内添加图片(已禁止选中图片时显示图片编辑弹窗):<p><img class="fr-dib" src=""></p>
+
+    // 删除<br>和空<p></p>
+    var text2 = text.replace(/<br>/ig, '').replace(/<p><\/p>/ig, '');
+    console.log(text2);
+
+    // 筛选出图片
+    var imgReg = /<img\sclass=\"fr-dib\"\ssrc=[\'"](.+?)[\'"]\>/ig;
+    var imgARR = text2.match(imgReg);
+    var noImgContent = text2.replace(imgReg, '').replace(/<p><\/p>/ig, '');
+    console.log('删除img标签后的:', noImgContent);
+
+
+    imgSrcReg = /src=['"].*?['"]/i;
+    let getImgSrcArr = (imgARR)=> {
+        let imgSrcArr = [];
+        imgARR.map((item, key)=> {
+            // 获取到如'src="img.jpg"'
+            let src = item.match(imgSrcReg)[0];
+            // 获取到src的具体值
+            var srcVal = src.split('=')[1].replace(/\'/g, "").replace(/\"/g, "");
+            imgSrcArr.push(srcVal);
+        });
+        return imgSrcArr;
+    };
+    let imgSrcArr = getImgSrcArr(imgARR);
+    console.log(imgSrcArr);
+
+    var pReg = /<p>((\w|\W)*?)<\/p>/ig;
+    var text4 = noImgContent.match(pReg);
+    //    console.log(text4);
+
+    // 去除p标签
+    text4.map(function (item, key) {
+        text4[key] = item.replace(/<p>/ig, '').replace(/<\/p>/ig, '');
+    });
+    console.log("无p标签的数组：", text4);
+
+</script>
+</html>

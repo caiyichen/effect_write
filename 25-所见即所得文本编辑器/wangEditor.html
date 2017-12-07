@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>wangEditor富文本编辑器</title>
+</head>
+<body>
+<div id="text-editor">
+    <p>请输入商品详情</p>
+</div>
+<button id="btn1">getJSON</button>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="./wangEditor.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#text-editor');
+    editor.customConfig.menus = ['image'];
+    editor.customConfig.zIndex = 1;
+    // 禁止粘贴
+    editor.customConfig.pasteTextHandle = function (content) {
+        // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
+        console.log('禁止粘贴');
+        return ''
+
+    };
+    editor.create();
+
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        let contentArr = [];
+        var json = editor.txt.getJSON();  // 获取 JSON 格式的内容
+        console.log(json);
+
+        json.map((item)=> {
+            if (item.tag == 'p') {
+                item.children.map((child)=> {
+                    if (typeof child == 'string') {
+                        contentArr.push({type: 'text', value: child});
+                    } else if (child instanceof Object && child.tag == 'img') {
+                        contentArr.push({type: 'image', value: child.attrs[0].value});
+                    }
+                });
+            }
+        });
+        console.log('结果：', contentArr);
+
+        return contentArr;
+    });
+</script>
+</body>
+</html>

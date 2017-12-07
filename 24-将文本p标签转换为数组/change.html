@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //    // 测试
+    //    let text = '<p>&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p><p>今天下雨了今天&lt;/p&gt;1111111&lt;/p&gt;</p><p>今天下雨了今天</p><p>今天下雨了今天</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p><p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"><br></p>';
+    //
+    text = '<p>1今天下雨了今天</p>' +
+            '<p>2今天下雨了今天<img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/3/31/_j0xiqhrf.jpg?imageView2/2/w/1800">22今天下雨了今天</p>' +
+            '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/3/31/_j0xiqhrf.jpg?imageView2/2/w/1800">33今天下雨了今天</p>' +
+            '<p><br></p>' +
+            '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/4/1/_j0ymit6b.jpg?imageView2/2/w/1800"></p>' +
+            '<p>3今天下雨了今天&lt;p&gt;4今天下雨了今天&lt;/p&gt;</p>' +
+            '<p>5你好&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p>' +
+            '<p>&lt;br&gt;</p>' +
+            '<p>6今天下雨了今天今天下雨了今天今天下雨了今天</p>';
+    //
+    //
+    //    result = '<p>1今天下雨了今天</p>' +
+    //            '<p>2今天下雨了今天</p>' +
+    //            '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/3/31/_j0xiqhrf.jpg?imageView2/2/w/1800"></p>' +
+    //            '<p>今天下雨了今天</p>' +
+    //            '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/4/1/_j0ymit6b.jpg?imageView2/2/w/1800"></p>' +
+    //            '<p>3今天下雨了今天&lt;p&gt;4今天下雨了今天&lt;/p&gt;</p>' +
+    //            '<p>5你好&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p>' +
+    //            '<p>&lt;br&gt;</p>' +
+    //            '<p>6今天下雨了今天今天下雨了今天今天下雨了今天</p>';
+
+
+
+    /**
+     * 组合商品详情
+     */
+    let getDetail = (detailDesc)=> {
+        detailDesc = '<p>1今天下雨了今天</p>' +
+                '<p>2今天下雨了今天<img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/3/31/_j0xiqhrf.jpg?imageView2/2/w/1800">22今天下雨了今天</p>' +
+                '<p>332今天下雨了今天<img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/3/31/_j0xiqhrf.jpg?imageView2/2/w/1800"></p>' +
+                '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/3/31/_j0xiqhrf.jpg?imageView2/2/w/1800">44今天下雨了今天</p>' +
+                '<p><br></p>' +
+                '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/4/1/_j0ymit6b.jpg?imageView2/2/w/1800"></p>' +
+                '<p>55今天下雨了今天&lt;p&gt;66今天下雨了今天&lt;/p&gt;</p>' +
+                '<p>77你好&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p>' +
+                '<p>&lt;br&gt;</p>' +
+                '<p>88今天下雨了今天今天下雨了今天今天下雨了今天</p>';
+
+        /**
+         * 获取图片src值
+         * @param imgArr 图片标签集
+         * @return {Array}
+         */
+        let getImgSrcArr = (imgArr)=> {
+            imgArr.map((item, key)=> {
+                // 获取到如'src="img.jpg"'
+                let src = item.match(imgSrcReg)[0];
+                // 获取到src的具体值
+                let srcVal = src.split('=')[1].replace(/\'/g, "").replace(/\"/g, "");
+
+                contentList.push({type: 'image', value: srcVal});
+            });
+        };
+
+        let imgReg = /<img\sclass=\"fr-dib\"\ssrc=[\'"](.+?)[\'"]\>/ig,
+                imgSrcReg = /src=['"].*?['"]/i,
+                pReg = /<p>((\w|\W)*?)<\/p>/ig,
+                contentList = [];
+
+        // 删除<br>和空<p></p>
+        let firstClearText = detailDesc.replace(/<br>/ig, '').replace(/<p><\/p>/ig, ''),
+                // 将内容以p标签化为数组
+                pArr = firstClearText.match(pReg);
+        console.log(pArr);
+
+        pArr.map((item, key)=> {
+            // 若含有图片标签，则先获取并存储除img标签的内容，再获取图片src值并存储；否则直接获取p标签内容
+            if (imgReg.test(item)) {
+                let imgArr = item.match(imgReg);
+                let textArr = angular.copy(item).replace(/<p>/ig, '').replace(/<\/p>/ig, '').replace(imgReg, '<img>').split('<img>');
+
+                if (textArr.length > 1) {
+                    if (textArr[0] != '' && textArr[1] == '') {
+                        contentList.push({type: 'text', value: textArr[0]});
+                        // 获取图片src值并存储
+                        getImgSrcArr(imgArr);
+                    } else if (textArr[0] != '' && textArr[1] != '') {
+                        contentList.push({type: 'text', value: textArr[0]});
+                        getImgSrcArr(imgArr);
+                        contentList.push({type: 'text', value: textArr[1]});
+
+                    } else if (textArr[0] == '' && textArr[1] != '') {
+                        getImgSrcArr(imgArr);
+                        contentList.push({type: 'text', value: textArr[1]});
+                    }
+                } else {
+                    // 获取并存储p标签中除img标签的内容
+                    let pContent = item.replace(imgReg, '').replace(/<p>/ig, '').replace(/<\/p>/ig, '');
+                    if (pContent != '') {
+                        contentList.push({type: 'text', value: pContent});
+                    }
+                    // 获取图片src值并存储
+                    getImgSrcArr(imgArr);
+                }
+            } else {
+                contentList.push({type: 'text', value: item.replace(/<p>/ig, '').replace(/<\/p>/ig, '')});
+            }
+        });
+
+        console.log("结果：", contentList);
+    };
+
+    getDetail();
+
+
+    /**
+     * 恢复成froala格式
+     *
+     */
+    let contents = '';
+    (function recoverToFroalaText(contentList) {
+        contentList.map((item)=> {
+            // 包含图片：添加class
+            if (item.type == 'image') {
+                contents += `<p><img class="fr-dib" src="${item.value}"></p>`;
+            } else if (item.type == 'text') {
+                contents += `<p>${item.value}</p>`;
+            }
+        });
+
+        console.log(contents);
+    })(contentList);
+
+
+</script>
+</html>

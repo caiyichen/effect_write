@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="77f9f211-b0ca-49a9-b667-4899f2b3c5e6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/24-将文本p标签转换为数组/change.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/24-将文本p标签转换为数组/toUse.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/24-将文本p标签转换为数组.html" afterPath="$PROJECT_DIR$/24-将文本p标签转换为数组/index.html" />
+    </list>
+    <ignored path="effect_write.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="effect_write" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="wangEditor.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="635">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wangEditor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <marker date="1512642880000" expanded="true" signature="39099:39107" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="50560:50580" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="51605:51625" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="55920:55934" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="62387:62418" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="62552:62581" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="62710:62739" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="64324:64330" ph=" " />
+                <marker date="1512642880000" expanded="true" signature="64457:64463" ph=" " />
+                <marker date="1512642880000" expanded="true" signature="65503:65572" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="69984:69990" ph=" " />
+                <marker date="1512642880000" expanded="true" signature="76157:76226" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="76267:76325" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="79371:79384" ph="..." />
+                <marker date="1512642880000" expanded="true" signature="109703:109710" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/24-将文本p标签转换为数组/index.html" />
+        <option value="$PROJECT_DIR$/24-将文本p标签转换为数组/toUse.html" />
+        <option value="$PROJECT_DIR$/24-将文本p标签转换为数组/change.html" />
+        <option value="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="901" />
+    <option name="y" value="23" />
+    <option name="width" value="1007" />
+    <option name="height" value="1014" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../zhuzi" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/25-所见即所得文本编辑器" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/1" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="901" y="23" width="1007" height="1014" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24798568" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/21-mockjs(前端拦截请求并模拟服务器响应)/jquery-mock/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/24-将文本p标签转换为数组/change.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="28" column="94" selection-start-line="0" selection-start-column="0" selection-end-line="138" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/24-将文本p标签转换为数组/toUse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <marker date="1512618479000" expanded="true" signature="145:149" ph="&lt;" />
+            <marker date="1512618479000" expanded="true" signature="253:257" ph="&gt;" />
+            <marker date="1512618479000" expanded="true" signature="271:275" ph="&lt;" />
+            <marker date="1512618479000" expanded="true" signature="277:281" ph="&gt;" />
+            <marker date="1512618479000" expanded="true" signature="288:292" ph="&lt;" />
+            <marker date="1512618479000" expanded="true" signature="294:298" ph="&gt;" />
+            <marker date="1512618479000" expanded="true" signature="333:339" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="340:346" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="347:353" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="354:360" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="361:367" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="368:374" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="375:381" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="382:388" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="389:395" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="396:402" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="403:409" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="410:416" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="417:423" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="424:430" ph=" " />
+            <marker date="1512618479000" expanded="true" signature="957:961" ph="&lt;" />
+            <marker date="1512618479000" expanded="true" signature="962:966" ph="&gt;" />
+            <marker date="1512618479000" expanded="true" signature="974:978" ph="&lt;" />
+            <marker date="1512618479000" expanded="true" signature="980:984" ph="&gt;" />
+            <marker date="1512618479000" expanded="true" signature="1011:1015" ph="&lt;" />
+            <marker date="1512618479000" expanded="true" signature="1119:1123" ph="&gt;" />
+            <marker date="1512618479000" expanded="true" signature="1147:1151" ph="&lt;" />
+            <marker date="1512618479000" expanded="true" signature="1153:1157" ph="&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/24-将文本p标签转换为数组/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
+          <folding>
+            <marker date="1512617479000" expanded="true" signature="940:944" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="1048:1052" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="1091:1095" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="1097:1101" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="1108:1112" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="1114:1118" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="1228:1234" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1235:1241" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1242:1248" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1249:1255" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1256:1262" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1263:1269" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1270:1276" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1277:1283" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1284:1290" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1291:1297" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1298:1304" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1305:1311" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1312:1318" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1319:1325" ph=" " />
+            <marker date="1512617479000" expanded="true" signature="1893:1897" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="1898:1902" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="1910:1914" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="1916:1920" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="1949:1953" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="2057:2061" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="2087:2091" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="2093:2097" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="2318:2322" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="2323:2327" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="2335:2339" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="2341:2345" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="2374:2378" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="2482:2486" ph="&gt;" />
+            <marker date="1512617479000" expanded="true" signature="2512:2516" ph="&lt;" />
+            <marker date="1512617479000" expanded="true" signature="2518:2522" ph="&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <marker date="1512642880000" expanded="true" signature="39099:39107" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="50560:50580" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="51605:51625" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="55920:55934" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="62387:62418" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="62552:62581" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="62710:62739" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="64324:64330" ph=" " />
+            <marker date="1512642880000" expanded="true" signature="64457:64463" ph=" " />
+            <marker date="1512642880000" expanded="true" signature="65503:65572" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="69984:69990" ph=" " />
+            <marker date="1512642880000" expanded="true" signature="76157:76226" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="76267:76325" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="79371:79384" ph="..." />
+            <marker date="1512642880000" expanded="true" signature="109703:109710" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

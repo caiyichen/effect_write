@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    var text = '<p>&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p><p>今天下雨了今天&lt;/p&gt;1111111&lt;/p&gt;</p><p>今天下雨了今天</p><p>今天下雨了今天</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p><p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"><br></p>';
+
+
+    text = '<p>1今天下雨了今天</p>' +
+            '<p>2今天下雨了今天<img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/3/31/_j0xiqhrf.jpg?imageView2/2/w/1800"></p>' +
+            '<p><br></p>' +
+            '<p>今天下雨了今天</p>' +
+            '<p><br></p>' +
+            '<p><img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/4/1/_j0ymit6b.jpg?imageView2/2/w/1800"></p>' +
+            '<p>3今天下雨了今天&lt;p&gt;4今天下雨了今天&lt;/p&gt;</p>' +
+            '<p>5你好&lt;img class="fr-dib" src="http://bk.image.styleweb.com.cn/2017/10/14/143_j8r4lpej.png?imageView2/2/w/1800"&gt;</p>' +
+            '<p>&lt;br&gt;</p>' +
+            '<p>6今天下雨了今天今天下雨了今天今天下雨了今天</p>';
+
+
+    var imgReg = /<img\sclass=\"fr-dib\"\ssrc=[\'"](.+?)[\'"]\>/ig,
+            imgSrcReg = /src=['"].*?['"]/i,
+            pReg = /<p>((\w|\W)*?)<\/p>/ig;
+
+
+    // 删除<br>和空<p></p>
+    var firstClearText = text.replace(/<br>/ig, '').replace(/<p><\/p>/ig, '');
+    console.log(firstClearText);
+
+    // 筛选出图片列表
+    var imgARR = firstClearText.match(imgReg);
+    var noImgText = firstClearText.replace(imgReg, '').replace(/<p><\/p>/ig, '');
+
+    /**
+     * 获取图片src值
+     * @param imgARR
+     * @return {Array}
+     */
+    let getImgSrcArr = (imgARR)=> {
+        let imgSrcArr = [];
+        imgARR.map((item, key)=> {
+            // 获取到如'src="img.jpg"'
+            let src = item.match(imgSrcReg)[0];
+            // 获取到src的具体值
+            var srcVal = src.split('=')[1].replace(/\'/g, "").replace(/\"/g, "");
+            imgSrcArr.push(srcVal);
+        });
+        return imgSrcArr;
+    };
+    // 获取图片src值集合
+    let imgSrcArr = getImgSrcArr(imgARR);
+    console.log(noImgText);
+
+
+    let contentList = [];
+    // 获取到p标签集合，并获取p标签的内容
+    noImgText.match(pReg).map(function (item, key) {
+        contentList.push({type: 'text', value: item.replace(/<p>/ig, '').replace(/<\/p>/ig, '')});
+    });
+
+    console.log("无p标签的数组：", text4);
+
+</script>
+</html>
