@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>wangEditor富文本编辑器</title>
+</head>
+<body>
+<div id="text-editor">
+    <p>请输入商品详情</p>
+</div>
+<button id="btn1">getJSON</button>
+
+<div class="test"></div>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="./wangEditor.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#text-editor');
+    editor.customConfig.menus = ['image'];
+    editor.customConfig.zIndex = 1;
+
+    //    editor.customConfig.pasteFilterStyle = true;
+
+    //编码
+    function html_encode(str) {
+        var s = "";
+        if (str.length == 0) return "";
+        s = str.replace(/&/g, "&amp;");
+        s = s.replace(/</g, "&lt;");
+        s = s.replace(/>/g, "&gt;");
+        s = s.replace(/ /g, "&nbsp;");
+        s = s.replace(/\'/g, "&#39;");
+        s = s.replace(/\"/g, "&quot;");
+        return s;
+    }
+
+    //解码
+    function html_decode(str) {
+        var s = "";
+        if (str.length == 0) return "";
+        s = str.replace(/&amp;/g, "&");
+        s = s.replace(/&lt;/g, "<");
+        s = s.replace(/&gt;/g, ">");
+        s = s.replace(/&nbsp;/g, " ");
+        s = s.replace(/&#39;/g, "\'");
+        s = s.replace(/&quot;/g, "\"");
+        return s;
+    }
+
+    editor.customConfig.pasteTextHandle = function (html) {
+        var pasteText = html_encode($('<div>').html(html).text());
+        console.log(22, pasteText);
+        return pasteText;
+    };
+
+    editor.create();
+
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        let contentArr = [];
+        var json = editor.txt.getJSON();  // 获取 JSON 格式的内容
+        console.log(json);
+
+        json.map((item)=> {
+            if (item.tag == 'p') {
+                item.children.map((child)=> {
+                    if (typeof child == 'string') {
+                        contentArr.push({type: 'text', value: child});
+                    } else if (child instanceof Object && child.tag == 'img') {
+                        contentArr.push({type: 'image', value: child.attrs[0].value});
+                    }
+                });
+            }
+        });
+        console.log('结果：', contentArr);
+
+        return contentArr;
+    });
+</script>
+</body>
+</html>

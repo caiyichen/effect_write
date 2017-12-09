@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+</head>
+<body>
+<div id="text-editor">
+    <p>请输入商品详情</p>
+</div>
+<button id="btn1">getJSON</button>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="./wangEditor.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#text-editor');
+    editor.customConfig.menus = ['image'];
+    editor.customConfig.zIndex = 1;
+
+    /**
+     * 粘贴回调(每行分别添加p标签)
+     * 注意：源码中已修改为只能粘贴文本（包括转义符）;
+     * @param html
+     * @return {string}
+     */
+    editor.customConfig.pasteTextHandle = function (html) {
+        var htmlArr = html.split('<br>');
+
+        htmlArr.forEach((item, key)=> {
+            htmlArr[key] = '<p>' + item + '</p>';
+        });
+
+        console.log(htmlArr);
+        return htmlArr.join('');
+    };
+
+    editor.create();
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        let contentArr = [];
+        var json = editor.txt.getJSON();  // 获取 JSON 格式的内容
+        console.log(json);
+
+        // 获取结果
+        json.map((item)=> {
+            if (item.tag == 'p') {
+                item.children.map((child)=> {
+                    if (typeof child == 'string') {
+                        contentArr.push({type: 'text', value: child});
+                    } else if (child instanceof Object && child.tag == 'img') {
+                        contentArr.push({type: 'image', value: child.attrs[0].value});
+                    }
+                });
+            }
+        });
+        console.log('结果：', contentArr);
+
+        return contentArr;
+    });
+</script>
+</body>
+</html>

@@ -14,17 +14,213 @@
 <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
 <script type="text/javascript" src="./wangEditor.js"></script>
 <script type="text/javascript">
+    /**
+     * 粘贴过滤借鉴了froala的粘贴方法，但未拷贝完，允许有问题。。。
+     **/
+
     var E = window.wangEditor;
     var editor = new E('#text-editor');
     editor.customConfig.menus = ['image'];
     editor.customConfig.zIndex = 1;
-    // 禁止粘贴
-    editor.customConfig.pasteTextHandle = function (content) {
-        // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
-        console.log('禁止粘贴');
-        return ''
 
-    };
+    //    editor.customConfig.pasteFilterStyle = true;
+
+    editor.customConfig.pasteTextHandle = function (html) {
+        let pasteDeniedTags = ['colgroup', 'col'],
+                pasteDeniedAttrs = ['class', 'id', 'style'];
+
+        /**
+         * Clean HTML that was pasted from Word.
+         */
+        function _wordClean(html) {
+            // Single item list.
+            html = html.replace(
+                    /<p(.*?)class="?'?MsoListParagraph"?'? ([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<ul><li>$3</li></ul>'
+            );
+            html = html.replace(
+                    /<p(.*?)class="?'?NumberedText"?'? ([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<ol><li>$3</li></ol>'
+            );
+
+            // List start.
+            html = html.replace(
+                    /<p(.*?)class="?'?MsoListParagraphCxSpFirst"?'?([\s\S]*?)(level\d)?([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<ul><li$3>$5</li>'
+            );
+            html = html.replace(
+                    /<p(.*?)class="?'?NumberedTextCxSpFirst"?'?([\s\S]*?)(level\d)?([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<ol><li$3>$5</li>'
+            );
+
+            // List middle.
+            html = html.replace(
+                    /<p(.*?)class="?'?MsoListParagraphCxSpMiddle"?'?([\s\S]*?)(level\d)?([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<li$3>$5</li>'
+            );
+            html = html.replace(
+                    /<p(.*?)class="?'?NumberedTextCxSpMiddle"?'?([\s\S]*?)(level\d)?([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<li$3>$5</li>'
+            );
+            html = html.replace(
+                    /<p(.*?)class="?'?MsoListBullet"?'?([\s\S]*?)(level\d)?([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<li$3>$5</li>'
+            );
+
+            // List end.
+            html = html.replace(
+                    /<p(.*?)class="?'?MsoListParagraphCxSpLast"?'?([\s\S]*?)(level\d)?([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<li$3>$5</li></ul>'
+            );
+            html = html.replace(
+                    /<p(.*?)class="?'?NumberedTextCxSpLast"?'?([\s\S]*?)(level\d)?([\s\S]*?)>([\s\S]*?)<\/p>/gi,
+                    '<li$3>$5</li></ol>'
+            );
+
+            // Clean list bullets.
+            html = html.replace(/<span([^<]*?)style="?'?mso-list:Ignore"?'?([\s\S]*?)>([\s\S]*?)<span/gi, '<span><span');
+
+            // Webkit clean list bullets.
+            html = html.replace(/<!--\[if \!supportLists\]-->([\s\S]*?)<!--\[endif\]-->/gi, '');
+            html = html.replace(/<!\[if \!supportLists\]>([\s\S]*?)<!\[endif\]>/gi, '');
+
+            // Remove mso classes.
+            html = html.replace(/(\n|\r| class=(")?Mso[a-zA-Z0-9]+(")?)/gi, ' ');
+
+            // Remove comments.
+            html = html.replace(/<!--[\s\S]*?-->/gi, '');
+
+            // Remove tags but keep content.
+            html = html.replace(/<(\/)*(meta|link|span|\\?xml:|st1:|o:|font)(.*?)>/gi, '');
+
+            // Remove no needed tags.
+            var word_tags = ['style', 'script', 'applet', 'embed', 'noframes', 'noscript'];
+            for (var i = 0; i < word_tags.length; i++) {
+                var regex = new RegExp('<' + word_tags[i] + '.*?' + word_tags[i] + '(.*?)>', 'gi');
+                html = html.replace(regex, '');
+            }
+
+            // Remove spaces.
+            html = html.replace(/&nbsp;/gi, ' ');
+
+            // Keep empty TH and TD.
+            html = html.replace(/<td([^>]*)><\/td>/g, '<td$1><br></td>');
+            html = html.replace(/<th([^>]*)><\/th>/g, '<th$1><br></th>');
+
+            // Remove empty tags.
+            var oldHTML;
+            do {
+                oldHTML = html;
+                html = html.replace(/<[^\/>][^>]*><\/[^>]+>/gi, '');
+            } while (html != oldHTML);
+
+            // Process list indentation.
+            html = html.replace(/<lilevel([^1])([^>]*)>/gi, '<li data-indent="true"$2>');
+            html = html.replace(/<lilevel1([^>]*)>/gi, '<li$1>');
+
+            // Clean HTML.
+            html = editor.clean.html(html, pasteDeniedTags, pasteDeniedAttrs);
+
+            // Clean empty links.
+            html = html.replace(/<a>(.[^<]+)<\/a>/gi, '$1');
+
+            // Process list indent.
+            var $div = $('<div>').html(html);
+            $div.find('li[data-indent]').each(function (index, li) {
+                var $li = $(li);
+                if ($li.prev('li').length > 0) {
+                    var $list = $li.prev('li').find('> ul, > ol');
+                    if ($list.length === 0) {
+                        $list = $('ul');
+                        $li.prev('li').append($list);
+                    }
+
+                    $list.append(li);
+                }
+                else {
+                    $li.removeAttr('data-indent');
+                }
+            });
+
+            editor.html.cleanBlankSpaces($div.get(0));
+
+            html = $div.html();
+
+            return html;
+        }
+
+
+        _wordClean();
+
+        /**
+         * Plain clean.
+         */
+        function _plainPasteClean(html) {
+            var $div = $('<div>').html(html);
+            console.log(11, $div.html());
+
+            $div.find('div, p, h1, h2, h3, h4, h5, h6, pre, blockquote').each(function (i, el) {
+                $(this).replaceWith('<p>' + $(el).html() + '</p>');
+            });
+
+            // Remove with the content.
+            $($div.find('*').not('p, div, h1, h2, h3, h4, h5, h6, pre, blockquote, ul, ol, li, table, tbody, thead, tr, td, br, img').get().reverse()).each(function () {
+                $(this).replaceWith($(this).html());
+            });
+
+////            $div.find('em,a').each(function (i, el) {
+////                if ('p,a,li,td'.indexOf($(this).parent().get(0).tagName.toLocaleLowerCase()) > -1) {
+////                    console.log(11, $(this).parent().get(0).tagName, 'p,a,li,td'.indexOf($(this).parent().get(0).tagName.toLocaleLowerCase()) > -1,$(el).html());
+////
+////                    $(el).replaceWith($(el).html());
+////                } else {
+////                    $(el).replaceWith('<p>' + $(el).html() + '</p>');
+////                }
+////            });
+//
+//            // Remove with the content.
+//            $($div.find('*').not('p, div, h1, h2, h3, h4, h5, h6, pre, blockquote, ul, ol, li, table, tbody, thead, tr, td, br, img').get().reverse()).each(function () {
+////                $(this).replaceWith('<p>' + $(this).html() + '</p>');
+//                $(this).replaceWith($(this).html());
+//            });
+
+
+            /**
+             * 获取返所有直接子元素，包括被选元素的文本和注释节点
+             * @param node
+             * @return {*}
+             */
+            function getContents(node) {
+                // 禁止iframe粘贴
+                if (!node || node.tagName == 'IFRAME') return [];
+
+                return $(node).contents();
+            }
+
+            // Remove comments. 删除注释
+            var cleanComments = function (node) {
+                var contents = getContents(node);
+
+                for (var i = 0; i < contents.length; i++) {
+                    if (contents[i].nodeType != 3 && contents[i].nodeType != 1) {
+                        $(contents[i]).remove();
+                    }
+                    else {
+                        cleanComments(contents[i]);
+                    }
+                }
+            };
+
+            cleanComments($div.get(0));
+
+            return $div.html();
+        }
+
+        var pasteText = _plainPasteClean(html);
+//        console.log(pasteText);
+        return pasteText;
+    }
+
     editor.create();
 
 

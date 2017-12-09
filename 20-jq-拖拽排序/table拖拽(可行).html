@@ -49,9 +49,12 @@
 </table>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
-
+<!--<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>-->
+<script src="./js/jquery-ui-drag.js"></script>
 <script>
+    /**
+     * 使用的是jquery-ui.js，但只下载了拖拽相关的js(jquery-ui-drag.js)
+     */
     $(document).ready(function () {
         var fixHelperModified = function (e, tr) {
                     var $originals = tr.children();
