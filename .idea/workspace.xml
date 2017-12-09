@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77f9f211-b0ca-49a9-b667-4899f2b3c5e6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/20-jq-拖拽排序/js/jquery-ui-drag.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/20-jq-拖拽排序/js/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/25-所见即所得文本编辑器/2-只允许粘贴纯文本（可行）.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/25-所见即所得文本编辑器/3-wangEditor(粘贴等可行).html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/20-jq-拖拽排序/table拖拽.html" afterPath="$PROJECT_DIR$/20-jq-拖拽排序/table拖拽(可行).html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html" afterPath="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js" afterPath="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/25-所见即所得文本编辑器/2-只允许粘贴纯文本（可行）.html" afterPath="$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/2-只允许粘贴纯文本（可行）.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/25-所见即所得文本编辑器/3-wangEditor(粘贴等可行).html" afterPath="$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/3-wangEditor(粘贴等可行).html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html" afterPath="$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/wangEditor.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js" afterPath="$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/wangEditor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/20-jq-拖拽排序/table拖拽(可行).html" afterPath="$PROJECT_DIR$/20-jq-拖拽排序/table拖拽(可行).html" />
     </list>
     <ignored path="effect_write.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="wangEditor.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html">
+      <file leaf-file-name="wangEditor.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/wangEditor.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+            <state relative-caret-position="273">
+              <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
               <folding>
                 <element signature="e#7282#7437#0" expanded="false" />
                 <element signature="e#7524#7922#0" expanded="false" />
@@ -45,18 +42,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="table拖拽(可行).html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/20-jq-拖拽排序/table拖拽(可行).html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="2-只允许粘贴纯文本（可行）.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/2-只允许粘贴纯文本（可行）.html">
+        <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/2-只允许粘贴纯文本（可行）.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1197">
               <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
@@ -65,8 +52,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="3-wangEditor(粘贴等可行).html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/3-wangEditor(粘贴等可行).html">
+      <file leaf-file-name="3-wangEditor(粘贴等可行).html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/3-wangEditor(粘贴等可行).html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="257">
               <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
@@ -104,11 +91,12 @@
         <option value="$PROJECT_DIR$/24-将文本p标签转换为数组/toUse.html" />
         <option value="$PROJECT_DIR$/24-将文本p标签转换为数组/change.html" />
         <option value="$PROJECT_DIR$/25-所见即所得文本编辑器/3-froala再修改.html" />
-        <option value="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js" />
         <option value="$PROJECT_DIR$/25-所见即所得文本编辑器/3-wangEditor 粘贴.html" />
         <option value="$PROJECT_DIR$/20-jq-拖拽排序/table拖拽.html" />
         <option value="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html" />
         <option value="$PROJECT_DIR$/25-所见即所得文本编辑器/2-只允许粘贴纯文本.html" />
+        <option value="$PROJECT_DIR$/20-jq-拖拽排序/table拖拽(可行).html" />
+        <option value="$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js" />
       </list>
     </option>
   </component>
@@ -119,7 +107,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="639" />
+    <option name="x" value="250" />
     <option name="y" value="23" />
     <option name="width" value="1119" />
     <option name="height" value="1014" />
@@ -179,7 +167,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="25-所见即所得文本编辑器" />
+              <option name="myItemId" value="25-极简所见即所得文本编辑器wangEditor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -194,24 +182,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="20-jq-拖拽排序" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="effect_write" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="effect_write" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="20-jq-拖拽排序" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,7 +249,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="639" y="23" width="1119" height="1014" extended-state="0" />
+    <frame x="250" y="23" width="1119" height="1014" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24681239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -318,7 +288,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html">
+    <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/wangEditor.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -329,12 +299,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js">
+    <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/wangEditor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#263#165776#0" expanded="false" />
+            <element signature="e#358#165871#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -378,39 +348,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="1401" column="12" selection-start-line="1401" selection-start-column="12" selection-end-line="1401" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="4675" column="0" selection-start-line="4675" selection-start-column="0" selection-end-line="4675" selection-end-column="0" />
-          <folding>
-            <element signature="e#263#165776#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/wangEditor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-          <folding>
-            <element signature="e#7282#7437#0" expanded="false" />
-            <element signature="e#7524#7922#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/20-jq-拖拽排序/table拖拽(可行).html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/2-只允许粘贴纯文本（可行）.html">
+    <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/2-只允许粘贴纯文本（可行）.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1197">
           <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
@@ -418,7 +360,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/25-所见即所得文本编辑器/3-wangEditor(粘贴等可行).html">
+    <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/3-wangEditor(粘贴等可行).html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
           <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
@@ -431,6 +373,49 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/wangEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+          <folding>
+            <element signature="e#358#165871#0" expanded="false" />
+            <marker date="1512799581000" expanded="true" signature="44046:44054" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="57059:57079" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="58242:58262" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="63073:63087" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="70360:70391" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="70525:70554" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="70683:70712" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="72437:72443" ph=" " />
+            <marker date="1512799581000" expanded="true" signature="72586:72592" ph=" " />
+            <marker date="1512799581000" expanded="true" signature="73752:73821" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="78689:78695" ph=" " />
+            <marker date="1512799581000" expanded="true" signature="85618:85687" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="85728:85786" ph="..." />
+            <marker date="1512799581000" expanded="true" signature="124917:124924" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/20-jq-拖拽排序/table拖拽(可行).html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/25-极简所见即所得文本编辑器wangEditor/wangEditor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <folding>
+            <element signature="e#7282#7437#0" expanded="false" />
+            <element signature="e#7524#7922#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

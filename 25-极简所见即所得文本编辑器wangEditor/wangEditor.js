@@ -1,3 +1,7 @@
+/**
+ * wangEditor 源码我caiyichen修改过
+ * https://www.kancloud.cn/wangfupeng/wangeditor3/332599
+ */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
         typeof define === 'function' && define.amd ? define(factory) :
