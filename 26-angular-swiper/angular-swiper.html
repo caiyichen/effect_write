@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Demos</title>
+
+    <link rel="stylesheet" href="./css/swiper.min.css">
+
+    <style>
+        .myslides {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100px;
+            border-bottom: 1px solid gray;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div ng-app="demoApp">
+
+    <div class="myslides">
+        <ks-swiper-container loop="false" show-nav-buttons="false" slides-per-view="4" space-between="5"
+                             pagination-clickable="false">
+            <ks-swiper-slide ng-repeat="s in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]">
+                <img ng-src="http://api.randomuser.me/portraits/thumb/men/{{s}}.jpg">
+            </ks-swiper-slide>
+        </ks-swiper-container>
+    </div>
+
+    <div class="myslides">
+        <ks-swiper-container loop="false" show-nav-buttons="false" slides-per-view="4" space-between="5"
+                             pagination-clickable="false">
+            <ks-swiper-slide>
+                <img ng-src="http://api.randomuser.me/portraits/thumb/men/1.jpg">
+            </ks-swiper-slide>
+            <ks-swiper-slide>
+                <img ng-src="http://api.randomuser.me/portraits/thumb/men/2.jpg">
+            </ks-swiper-slide>
+        </ks-swiper-container>
+    </div>
+
+    <div class="myslides">
+        <ks-swiper-container loop="true" show-nav-buttons="true" slides-per-view="4" space-between="5"
+                             pagination-clickable="false">
+            <ks-swiper-slide ng-repeat="s in [1,2,3,4,5]">
+                <img ng-src="http://api.randomuser.me/portraits/thumb/women/{{s}}.jpg">
+            </ks-swiper-slide>
+        </ks-swiper-container>
+    </div>
+
+    <div class="myslides" ng-controller="TestCtrl">
+        <ks-swiper-container on-ready="onReadySwiper(swiper)"
+                             swiper="swiper"
+                             slides-per-view="3"
+                             slides-per-column="1"
+                             space-between="30"
+                             pagination-is-active="true"
+                             pagination-clickable="true"
+                             show-nav-buttons="true"
+                             loop="false"
+                             autoplay="1000"
+                             initial-slide="0"
+                             direction="horizontal">
+            <ks-swiper-slide ng-repeat="s in arr">
+                <img ng-src="http://api.randomuser.me/portraits/thumb/men/{{s}}.jpg">
+            </ks-swiper-slide>
+        </ks-swiper-container>
+        <button ng-click="next()">Next</button>
+    </div>
+
+    <!--法2 动态添加幻灯片-->
+    <div class="myslides" ng-controller="TestCtrl">
+        <ks-swiper-container on-ready="onReadySwiper(swiper)"
+                             swiper="swiper"
+                             slides-per-view="3"
+                             slides-per-column="1"
+                             space-between="30"
+                             pagination-is-active="true"
+                             pagination-clickable="true"
+                             show-nav-buttons="true"
+                             loop="false"
+                             autoplay="1000"
+                             initial-slide="0"
+                             direction="horizontal">
+            <!--<ks-swiper-slide ng-repeat="s in arr">-->
+                <!--<img ng-src="http://api.randomuser.me/portraits/thumb/men/{{s}}.jpg">-->
+            <!--</ks-swiper-slide>-->
+        </ks-swiper-container>
+        <button ng-click="next()">Next</button>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="./js/swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.6.2/angular.min.js"></script>
+<script src="./js/angular-swiper.js"></script>
+
+<script>
+    /**
+     * angular swiper不能使用ng-if\ng-show,因为会导致幻灯片事件无效。
+     * 为了能正常展示幻灯片样式，要使用ng-if
+     */
+    var module = angular.module('demoApp', ['ksSwiper']);
+    module.controller('TestCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+
+        $scope.swiper = {};
+        $scope.arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+        $scope.next = function () {
+            $scope.swiper.slideNext();
+        };
+
+        $('.swiper-button-next').on('click', function (e) {
+            e.preventDefault();
+            $scope.swiper.slideNext();
+        });
+
+        $('.swiper-button-prev').on('click', function (e) {
+            e.preventDefault();
+            $scope.swiper.slidePrev();
+        });
+
+        $scope.onReadySwiper = function (swiper) {
+            console.log('onReadySwiper');
+            swiper.on('slideChangeStart', function () {
+                console.log('slideChangeStart');
+            });
+        };
+
+
+
+        // 法2 动态添加幻灯片
+        // 获取当前预览的模板详情
+        mpTplDetailModel.get({wechatid: viewTpl.wechatid}).$promise.then((detail)=> {
+            $scope.viewProcessing = false;
+            $scope.mpTplDetail = detail;
+
+//            $scope.mpTplDetail = {
+                //             "thumbnail_url": [
+                //                 "http://bk.image.styleweb.com.cn/2017/12/4/_jarvwkio.jpg",
+                //                 "http://bk.image.styleweb.com.cn/2017/12/4/_jarvwkio.jpg",
+                //                 "http://bk.image.styleweb.com.cn/2017/12/4/_jarvwkio.jpg",
+                //                 "http://bk.image.styleweb.com.cn/2017/12/4/_jarvwkio.jpg",
+                //                 "http://bk.image.styleweb.com.cn/2017/12/4/_jarvwkio.jpg",
+                //                 "http://bk.image.styleweb.com.cn/2017/12/4/_jarvwkio.jpg"
+                //             ]
+                //         };
+
+            // 动态添加幻灯片
+            $scope.mpTplDetail.thumbnail_url.map((imgUrl)=> {
+                $scope.swiper.appendSlide(`<div class="b-a m-b-xs swiper-slide">
+    <img src='${imgUrl}' class="w-full ng-scope">
+</div>`)
+            });
+        }, ()=> {
+            $scope.viewProcessing = false;
+        });
+    }]);
+</script>
+
+</body>
+
+</html>

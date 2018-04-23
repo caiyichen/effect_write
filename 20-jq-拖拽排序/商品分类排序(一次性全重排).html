@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * 初始化table中tr的拖拽事件
+     */
+    let initDragEvent = ()=> {
+        $(document).ready(function () {
+            $("#tableSortable").find("tbody").sortable({
+                delay: 200,
+                distance: 15,
+                handle: ".drag-btn",
+                helper: function (e, tr) {
+                    // fixHelperModified
+                    var $originals = tr.children();
+                    var $helper = tr.clone();
+                    $helper.children().each(function (index) {
+                        $(this).width($originals.eq(index).width())
+                    });
+                    // 拖拽时的复制项样式设置
+                    $helper.css({'opacity': 0.8, 'background-color': '#fff', 'border': '1px solid #dee5e7'});
+
+                    return $helper;
+                },
+                stop: function (e, ui) {
+                    let idArr = [];
+
+                    // 获取列表的新排序值
+                    $('#tableSortable').find('.dragable-tr').each(function (i) {
+                        idArr.push(parseInt($(this).attr('data-id')));
+                    });
+
+                    // 保存列表的新排序值
+                    {
+                        mpGoodCategorySortModel.post({appid: parseInt($stateParams.appid)}, idArr).$promise.then(()=> {
+                            notify.success('排序保存成功！');
+                        });
+                    }
+                    // 更新前端列表中的排序值sort(主为了当用户点击"保存"时sort值与数据库已保存的sort值是匹配的)
+                    {
+                        $scope.goodCategoryList.map((item)=> {
+                            idArr.map((id, key)=> {
+                                if (item.id == id) {
+                                    item.sort = key;
+                                }
+                            });
+                        });
+                    }
+                }
+            });
+            // 不用跟.disableSelection(),因内层的"编辑分类名"需要选中
+        });
+    };
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="util/jquery-3.1.0.min.js"></script>
+111安恒信息技术有限公司,
+<script>
+
+    $(document).ready(function() {
+        $('.z-nav-bar a').click(function () {
+            $('html, body').animate({
+                scrollTop: $($.attr(this, 'href')).offset().top}, 500);
+            return false;
+        });
+
+        var html = document.body.innerHTML;
+        var newstr = html.replace(/安恒信息技术有限公司/g,"安恒信息技术股份有限公司");
+        document.body.innerHTML = newstr;
+    });
+
+</script>
+</html>
